@@ -17,8 +17,11 @@ export default function FeaturesSection() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Add visible class to trigger all staggered animations
-            container.classList.add('features-visible');
+            // Delay animation start by 250ms
+            setTimeout(() => {
+              // Add visible class to trigger all staggered animations
+              container.classList.add('features-visible');
+            }, 250);
             // Disconnect after triggering (only animate once)
             observer.disconnect();
           }

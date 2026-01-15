@@ -1154,6 +1154,7 @@ body {
 .manage-projects-visible .manage-projects-heading-animated {
   opacity: 1;
   transform: translateX(0);
+  transition-delay: 250ms;
 }
 
 /* Manage Projects Image Slide In Animation (from left, staggered) */
@@ -1169,6 +1170,7 @@ body {
 .manage-projects-visible .manage-projects-image-animated {
   opacity: 1;
   transform: translateX(0);
+  transition-delay: 250ms;
 }
 
 /* ========================================
