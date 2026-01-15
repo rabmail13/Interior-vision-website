@@ -4,6 +4,9 @@ import ColourfulText from './components/ColourfulText';
 import TypingText from './components/TypingText';
 import HighlightText from './components/HighlightText';
 import FeaturesSection from './components/FeaturesSection';
+import VideoPlayer from './components/VideoPlayer';
+import VisualProductSection from './components/VisualProductSection';
+import BuiltByDesigners from './components/BuiltByDesigners';
 
 export default function Home() {
   return (
@@ -21,37 +24,42 @@ export default function Home() {
             <div className="hero-header">
               {/* Center: Title Block */}
               <div className="hero-title-block">
-              {/* Title elements wrapper */}
+              {/* Title elements wrapper - horizontal layout */}
               <div className="hero-titles-wrapper">
-                {/* Interior row: Interior div + arrow + button */}
-                <div className="hero-title-row">
-                  <div className="hero-title-word">
-                    <h1 className="hero-title no-italic hero-title-rotate-in">Interior</h1>
+                {/* Left side: Titles */}
+                <div className="hero-titles-left">
+                  {/* Interior row: Just the Interior title */}
+                  <div className="hero-title-row">
+                    <div className="hero-title-word">
+                      <h1 className="hero-title no-italic hero-title-rotate-in">Interior</h1>
+                    </div>
                   </div>
-                  <div className="hero-cta-row">
-                    <svg
-                      className="hero-arrow"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                    >
-                      <line x1="4" y1="12" x2="20" y2="12" />
-                      <polyline points="16 8 20 12 16 16" />
-                    </svg>
-                    <a
-                      href="#contact"
-                      className="hero-cta-button"
-                    >
-                      Try for Free
-                    </a>
+                  {/* Vision in its own div */}
+                  <div className="hero-title-word">
+                    <h1 className="hero-title">
+                      <TypingText startDelay={300} typingSpeed={25}>Vision</TypingText>
+                    </h1>
                   </div>
                 </div>
-                {/* Vision in its own div */}
-                <div className="hero-title-word">
-                  <h1 className="hero-title">
-                    <TypingText startDelay={300} typingSpeed={25}>Vision</TypingText>
-                  </h1>
+                
+                {/* Right side: Try for Free button - positioned to the right */}
+                <div className="hero-cta-row">
+                  <svg
+                    className="hero-arrow"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <polyline points="16 8 20 12 16 16" />
+                  </svg>
+                  <a
+                    href="#contact"
+                    className="hero-cta-button"
+                  >
+                    Try for Free
+                  </a>
                 </div>
               </div>
               
@@ -87,7 +95,7 @@ export default function Home() {
           <div className="tagline-container">
             <div className="tagline-line">
               <h2 className="tagline-text">
-                <TypingText typingSpeed={25} startDelay={150}>
+                <TypingText typingSpeed={12} startDelay={100}>
                   From <ColourfulText text="inspiration" /> to <ColourfulText text="implementation" />,
                 </TypingText>
               </h2>
@@ -96,7 +104,7 @@ export default function Home() {
               <h2 className="tagline-text tagline-underline">
                 <HighlightText 
                   text="all in one place." 
-                  delay={2225}
+                  delay={1100}
                   duration={600}
                   highlightColor="#d4ff00"
                   textColor="#000000"
@@ -116,70 +124,14 @@ export default function Home() {
           <FeaturesSection />
         </ScrollSection>
 
-        {/* Section 4: Manage Projects */}
+        {/* Section 4: Visual Product Search */}
         <ScrollSection
-          id="manage-projects"
+          id="visual-product-search"
           className="section-4"
           contentAlignment="center"
           backgroundColor="#000000"
         >
-          <div className="manage-container">
-            {/* Left content */}
-            <div className="manage-content">
-              <div className="manage-header">
-                <h2 className="manage-title">
-                  MANAGE YOUR<br />
-                  PROJECTS IN <span className="manage-title-italic">ONE PLACE</span>
-                </h2>
-                <div className="manage-logo-badge">INTERIOR VISION</div>
-              </div>
-
-              <div className="manage-section">
-                <div className="manage-number">01</div>
-                <div className="manage-text-block">
-                  <h3 className="manage-subtitle">Background</h3>
-                  <p className="manage-description">
-                    Interior designers waste hours juggling multiple subscriptions—mood board software, sourcing platforms, spreadsheet-based spec sheets, and project trackers.
-                  </p>
-                </div>
-              </div>
-
-              <div className="manage-section">
-                <div className="manage-number">02</div>
-                <div className="manage-text-block">
-                  <h3 className="manage-subtitle">Solution</h3>
-                  <p className="manage-description">
-                    Replace 3-4 tool subscriptions with one platform. Eliminate spreadsheet chaos. Deliver faster, more accurate proposals to clients—and get back to designing.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right devices */}
-            <div className="manage-devices">
-              {/* Tablet */}
-              <div className="manage-device-tablet">
-                <div className="manage-device-screen">
-                  <div className="manage-device-sky">
-                    <div className="manage-cloud manage-cloud-1"></div>
-                    <div className="manage-cloud manage-cloud-2"></div>
-                  </div>
-                  <div className="manage-device-hills"></div>
-                </div>
-              </div>
-
-              {/* Phone */}
-              <div className="manage-device-phone">
-                <div className="manage-device-notch"></div>
-                <div className="manage-device-screen-small">
-                  <div className="manage-device-sky-small">
-                    <div className="manage-cloud-small"></div>
-                  </div>
-                  <div className="manage-device-hills-small"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <VisualProductSection />
         </ScrollSection>
 
         {/* Section 5: Mood Boards to Spec Sheets */}
@@ -189,29 +141,8 @@ export default function Home() {
           contentAlignment="center"
           backgroundColor="#ffffff"
         >
-          <div className="mood-container">
-            {/* Title with arrow */}
-            <div className="mood-header">
-              <span className="mood-title-text">From</span>
-              <span className="mood-title-italic">Mood Boards</span>
-              <svg
-                className="mood-arrow"
-                viewBox="0 0 100 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <line x1="0" y1="12" x2="90" y2="12" />
-                <polyline points="85 8 90 12 85 16" />
-              </svg>
-              <span className="mood-title-text">to</span>
-              <span className="mood-title-italic">Spec Sheets</span>
-            </div>
-
-            {/* Video placeholder box */}
-            <div className="mood-video-box">
-              <span className="mood-video-placeholder">[video placeholder]</span>
-            </div>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+            <VideoPlayer src="/FROM MOOD BOARDS (2).mp4" />
           </div>
         </ScrollSection>
 
@@ -222,15 +153,7 @@ export default function Home() {
           contentAlignment="center"
           backgroundColor="#f5f5f0"
         >
-          <div className="built-container">
-            <h2 className="built-heading">
-              Built by Designers, <span className="built-italic">For Designers.</span>
-            </h2>
-            <div className="built-subtext">
-              <p className="built-line">No gimicks.</p>
-              <p className="built-line">No overpriced subscriptions.</p>
-            </div>
-          </div>
+          <BuiltByDesigners />
         </ScrollSection>
 
         {/* Section 7: About Us */}

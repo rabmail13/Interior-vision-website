@@ -665,15 +665,15 @@ body {
    Hero Section - Fixed Layout (no dynamic resizing)
    ======================================== */
 
-/* Main container - fixed sizing, content cut off if viewport too small */
+/* Main container - reduced padding and gaps */
 .hero-container {
   width: 100%;
   margin: 0;
-  padding: 2.5rem 4rem;
+  padding: 1.5rem 3rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   overflow: hidden;
 }
 
@@ -725,17 +725,28 @@ body {
 /* Title block - centered */
 .hero-title-block {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
   flex-shrink: 0;
+  width: 100%;
 }
 
-/* Titles wrapper - ensure left alignment */
+/* Titles wrapper - reduced gap */
 .hero-titles-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+/* Left side container for titles */
+.hero-titles-left {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
+  flex-shrink: 0;
 }
 
 .hero-title-word {
@@ -750,10 +761,10 @@ body {
   flex-shrink: 0;
 }
 
-/* Hero title - fixed size */
+/* Hero title - reduced size */
 .hero-title {
   font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
-  font-size: 10rem;
+  font-size: 6rem;
   line-height: 0.9;
   font-weight: 400;
   font-style: italic;
@@ -803,23 +814,23 @@ body {
   animation-fill-mode: both;
 }
 
-/* Arrow - fixed size */
+/* Arrow - reduced size */
 .hero-arrow {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   flex-shrink: 0;
-  margin-left: 1rem;
+  margin-left: 0.75rem;
 }
 
-/* CTA button - fixed sizing */
+/* CTA button - reduced sizing */
 .hero-cta-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 3rem;
+  padding: 1rem 2rem;
   border-radius: 9999px;
   background-color: #d4ff00;
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   font-weight: 500;
   white-space: nowrap;
   flex-shrink: 0;
@@ -832,24 +843,24 @@ body {
   background-color: #c4ef00;
 }
 
-/* CTA row - arrow always left of button */
+/* CTA row - reduced gap */
 .hero-cta-row {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-shrink: 0;
-  margin-top: 6rem;
+  margin-top: 0;
 }
 
-/* Image grid - always 4 columns */
+/* Image grid - reduced spacing */
 .hero-image-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
   width: 100%;
   overflow: hidden;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 /* Image card - fixed border radius */
@@ -959,7 +970,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  text-align: left;
+  text-align: center;
   flex-shrink: 0;
 }
 
@@ -982,9 +993,9 @@ body {
   opacity: 0;
   transform: translateY(60px);
   transition: 
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: calc(750ms + var(--card-index, 0) * 750ms);
+    opacity 1.05s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(300ms + var(--card-index, 0) * 225ms);
 }
 
 .features-visible .feature-card-animated {
@@ -1000,10 +1011,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #000000;
   flex-shrink: 0;
+  margin: 0 auto;
 }
 
 .feature-title {
@@ -1025,6 +1034,38 @@ body {
   color: #333333;
   margin: 0;
   flex-shrink: 0;
+}
+
+/* ========================================
+   Section 4: Visual Product Search - Slide in animations
+   ======================================== */
+
+.section-4-heading {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition:
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.25s;
+}
+
+.section-4-heading.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.section-4-image {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition:
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.45s;
+}
+
+.section-4-image.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ========================================
@@ -1403,6 +1444,8 @@ body {
   letter-spacing: -0.01em;
   margin: 0;
   color: #000000;
+  position: relative;
+  display: inline-block;
 }
 
 .built-italic {
@@ -1423,6 +1466,18 @@ body {
   line-height: 1.4;
   margin: 0;
   color: #000000;
+}
+
+/* Float-up animation for built lines */
+.built-line-float {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.built-line-float.built-line-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ========================================
@@ -1638,20 +1693,20 @@ body {
   }
 }
 
-/* Hero rotating text styling */
+/* Hero rotating text styling - reduced size */
 .hero-rotating-wrapper {
-  margin-top: 4rem;
+  margin-top: 2rem;
   width: 100%;
   text-align: center;
 }
 
 .hero-rotating-text {
   font-family: var(--font-inter), sans-serif;
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   font-weight: 400;
   letter-spacing: 0.02em;
   color: #666666;
-  padding: 0.5em 1em;
+  padding: 0.25em 0.5em;
 }
 
 /* ========================================

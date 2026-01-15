@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { FolderPen, Brain } from 'lucide-react';
 
 export default function FeaturesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -47,7 +48,7 @@ export default function FeaturesSection() {
           className="feature-card feature-card-animated" 
           style={{ '--card-index': 1 } as React.CSSProperties}
         >
-          <div className="feature-number">01</div>
+          <div className="feature-number"><FolderPen /></div>
           <h3 className="feature-title">
             Full-Suite<br />Project Management
           </h3>
@@ -63,9 +64,9 @@ export default function FeaturesSection() {
           className="feature-card feature-card-animated" 
           style={{ '--card-index': 2 } as React.CSSProperties}
         >
-          <div className="feature-number">02</div>
+          <div className="feature-number"><FolderPen /></div>
           <h3 className="feature-title">
-            Intelligent Inventory<br />Management
+            Intelligent<br />Inventory<br />Management
           </h3>
           <p className="feature-description">
             One-click save → <br />
@@ -80,7 +81,7 @@ export default function FeaturesSection() {
           className="feature-card feature-card-animated" 
           style={{ '--card-index': 3 } as React.CSSProperties}
         >
-          <div className="feature-number">03</div>
+          <div className="feature-number"><Brain /></div>
           <h3 className="feature-title">
             Automated<br />workflows to<br />save you time
           </h3>

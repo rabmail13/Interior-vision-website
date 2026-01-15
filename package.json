@@ -17,6 +17,7 @@
     "@sanity/vision": "^4.20.3",
     "dotenv": "^17.2.3",
     "groq": "^4.20.3",
+    "lucide-react": "^0.562.0",
     "motion": "^12.26.2",
     "next": "16.0.7",
     "next-sanity": "^11.6.10",
