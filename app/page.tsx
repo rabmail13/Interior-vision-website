@@ -26,7 +26,7 @@ export default function Home() {
               <div className="hero-title-block">
               {/* Title elements wrapper */}
               <div className="hero-titles-wrapper">
-                {/* Interior row: Just Interior div */}
+                {/* Interior row: Interior + CTA */}
                 <div className="hero-title-row">
                   <div className="hero-title-word">
                     <svg 
@@ -47,25 +47,24 @@ export default function Home() {
                     </svg>
                     <h1 className="hero-title no-italic hero-title-rotate-in">Interior</h1>
                   </div>
-                </div>
-                {/* CTA row - centered between titles */}
-                <div className="hero-cta-row">
-                  <svg
-                    className="hero-arrow"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1"
-                  >
-                    <line x1="4" y1="12" x2="20" y2="12" />
-                    <polyline points="16 8 20 12 16 16" />
-                  </svg>
-                  <a
-                    href="#contact"
-                    className="hero-cta-button"
-                  >
-                    Try for Free
-                  </a>
+                  <div className="hero-cta-row">
+                    <svg
+                      className="hero-arrow"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                    >
+                      <line x1="4" y1="12" x2="20" y2="12" />
+                      <polyline points="16 8 20 12 16 16" />
+                    </svg>
+                    <a
+                      href="#contact"
+                      className="hero-cta-button"
+                    >
+                      Try for Free
+                    </a>
+                  </div>
                 </div>
                 {/* Vision in its own div */}
                 <div className="hero-title-word">
