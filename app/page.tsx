@@ -1,4 +1,8 @@
 import ScrollSection from './components/ScrollSection';
+import RotatingText from './components/RotatingText';
+import ColourfulText from './components/ColourfulText';
+import TypingText from './components/TypingText';
+import HighlightText from './components/HighlightText';
 
 export default function Home() {
   return (
@@ -44,6 +48,19 @@ export default function Home() {
                 <div className="hero-title-word">
                   <h1 className="hero-title">Vision</h1>
                 </div>
+                
+                {/* Rotating text preview */}
+                <div className="hero-rotating-wrapper">
+                  <RotatingText
+                    texts={[
+                      "Design smarter, not harder.",
+                      "Your vision, streamlined.",
+                      "One platform. Endless possibilities."
+                    ]}
+                    interval={3000}
+                    className="hero-rotating-text"
+                  />
+                </div>
               </div>
             </div>
 
@@ -61,11 +78,23 @@ export default function Home() {
           backgroundColor="#000000"
         >
           <div className="tagline-container">
-            <h2 className="tagline-text">
-              From inspiration to implementation,
-              <br />
-              <span className="tagline-underline">all in one place.</span>
-            </h2>
+            <div className="tagline-line">
+              <h2 className="tagline-text">
+                <TypingText typingSpeed={25} startDelay={150}>
+                  From <ColourfulText text="inspiration" /> to <ColourfulText text="implementation" />,
+                </TypingText>
+              </h2>
+            </div>
+            <div className="tagline-line">
+              <h2 className="tagline-text tagline-underline">
+                <HighlightText 
+                  text="all in one place." 
+                  delay={875}
+                  duration={600}
+                  highlightColor="#facc15"
+                />
+              </h2>
+            </div>
           </div>
         </ScrollSection>
 
@@ -252,7 +281,7 @@ export default function Home() {
           <div className="about-container">
             {/* Left content */}
             <div className="about-content">
-              <h2 className="about-title">About <span className="about-title-italic">Us</span></h2>
+              <h2 className="about-title">About Us</h2>
               <div className="about-logo-stack">
                 <div className="about-logo-oval"></div>
                 <div className="about-logo-oval"></div>
