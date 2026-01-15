@@ -20,6 +20,8 @@ export default function Home() {
             <div className="hero-header">
               {/* Center: Title Block */}
               <div className="hero-title-block">
+              {/* Title elements wrapper */}
+              <div className="hero-titles-wrapper">
                 {/* Interior row: Interior div + arrow + button */}
                 <div className="hero-title-row">
                   <div className="hero-title-word">
@@ -48,20 +50,21 @@ export default function Home() {
                 <div className="hero-title-word">
                   <h1 className="hero-title">Vision</h1>
                 </div>
-                
-                {/* Rotating text preview */}
-                <div className="hero-rotating-wrapper">
-                  <RotatingText
-                    texts={[
-                      "Design smarter, not harder.",
-                      "Your vision, streamlined.",
-                      "One platform. Endless possibilities."
-                    ]}
-                    interval={3000}
-                    className="hero-rotating-text"
-                  />
-                </div>
               </div>
+              
+              </div>
+            </div>
+
+            {/* Rotating text preview - outside hero-title-block */}
+            <div className="hero-rotating-wrapper">
+              <RotatingText
+                texts={[
+                  "Design smarter, not harder.",
+                  "Your vision, streamlined."
+                ]}
+                interval={3000}
+                className="hero-rotating-text"
+              />
             </div>
 
             {/* Image grid area - content to be added later */}
@@ -89,9 +92,10 @@ export default function Home() {
               <h2 className="tagline-text tagline-underline">
                 <HighlightText 
                   text="all in one place." 
-                  delay={875}
+                  delay={2225}
                   duration={600}
-                  highlightColor="#facc15"
+                  highlightColor="#d4ff00"
+                  textColor="#000000"
                 />
               </h2>
             </div>

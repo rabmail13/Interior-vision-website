@@ -730,6 +730,18 @@ body {
   flex-shrink: 0;
 }
 
+/* Titles wrapper - ensure left alignment */
+.hero-titles-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.hero-title-word {
+  text-align: left;
+}
+
 /* Interior row with arrow + button */
 .hero-title-row {
   display: flex;
@@ -913,6 +925,35 @@ body {
   gap: 1.5rem;
   text-align: left;
   flex-shrink: 0;
+}
+
+/* Features Heading Slide Up Animation */
+.features-heading-animated {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.features-visible .features-heading-animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Feature Card Slide Up Animation */
+.feature-card-animated {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: 
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--card-index, 0) * 200ms);
+}
+
+.features-visible .feature-card-animated {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .feature-number {

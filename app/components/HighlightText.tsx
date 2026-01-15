@@ -7,6 +7,7 @@ interface HighlightTextProps {
   delay?: number; // delay in ms before highlight starts
   duration?: number; // duration of highlight animation in ms
   highlightColor?: string;
+  textColor?: string;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export default function HighlightText({
   delay = 0,
   duration = 600,
   highlightColor = '#facc15', // yellow highlight
+  textColor,
   className = '',
 }: HighlightTextProps) {
   const [inView, setInView] = useState(false);
@@ -57,6 +59,9 @@ export default function HighlightText({
       style={{
         position: 'relative',
         display: 'inline',
+        opacity: animating ? 1 : 0,
+        transition: 'opacity 0ms',
+        color: textColor,
       }}
     >
       {/* Background highlight that animates */}
