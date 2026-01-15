@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import ScrollSection from './components/ScrollSection';
 import RotatingText from './components/RotatingText';
 import ColourfulText from './components/ColourfulText';
@@ -8,6 +11,14 @@ import ManageProjectsSection from './components/ManageProjectsSection';
 import BuiltByDesigners from './components/BuiltByDesigners';
 
 export default function Home() {
+  const section5VideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      section5VideoRef.current?.play();
+    }, 250);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <>
       <main className="scroll-container">
@@ -152,7 +163,7 @@ export default function Home() {
           backgroundColor="#ffffff"
         >
           <video
-            autoPlay
+            ref={section5VideoRef}
             muted
             loop
             playsInline
