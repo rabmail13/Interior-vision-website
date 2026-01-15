@@ -682,8 +682,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   overflow: visible;
 }
@@ -727,6 +727,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   width: 100%;
 }
@@ -735,7 +736,7 @@ body {
 .hero-titles-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   width: 100%;
   gap: 0;
@@ -1099,7 +1100,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem;
   overflow: hidden;
   box-sizing: border-box;
 }
