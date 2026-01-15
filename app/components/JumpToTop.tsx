@@ -5,6 +5,38 @@ import { useState, useEffect } from 'react';
 export default function JumpToTop() {
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
+
+  // Track hero section visibility to hide buttons on first section
+  useEffect(() => {
+    const heroElement = document.getElementById('hero');
+
+    // Guard: If hero doesn't exist, assume we're not on hero (show buttons)
+    if (!heroElement) {
+      setIsHeroVisible(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Hero is visible when intersecting with viewport
+          setIsHeroVisible(entry.isIntersecting);
+        });
+      },
+      {
+        threshold: 0.5,  // Trigger when 50% of hero is visible
+        rootMargin: '0px'
+      }
+    );
+
+    observer.observe(heroElement);
+
+    // Cleanup on unmount
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const scrollToTop = () => {
     const heroElement = document.getElementById('hero');
@@ -20,6 +52,11 @@ export default function JumpToTop() {
       });
     }
   };
+
+  // Don't render buttons if we're on the hero section
+  if (isHeroVisible) {
+    return null;
+  }
 
   return (
     <>
