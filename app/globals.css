@@ -23,19 +23,19 @@
 
   /* Content Container */
   --content-max-width: 1200px;
-  --content-padding-x: clamp(24px, 5vw, 80px);
-  --content-padding-y: clamp(48px, 8vh, 120px);
+  --content-padding-x: 60px;
+  --content-padding-y: 80px;
 
-  /* Typography Scale */
-  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --font-size-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-  --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-  --font-size-lg: clamp(1.25rem, 1rem + 1vw, 1.5rem);
-  --font-size-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
-  --font-size-2xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
-  --font-size-3xl: clamp(2.5rem, 2rem + 3vw, 4rem);
-  --font-size-4xl: clamp(3rem, 2rem + 5vw, 6rem);
-  --font-size-hero: clamp(3.5rem, 2.5rem + 7vw, 8rem);
+  /* Typography Scale - Fixed sizes */
+  --font-size-xs: 0.875rem;
+  --font-size-sm: 1rem;
+  --font-size-base: 1.125rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-2xl: 3rem;
+  --font-size-3xl: 4rem;
+  --font-size-4xl: 6rem;
+  --font-size-hero: 8rem;
 
   /* Line Heights */
   --line-height-tight: 1.1;
@@ -88,25 +88,7 @@
   --max-width-content: 1400px;
 }
 
-/* Responsive breakpoints for content */
-@media (min-width: 640px) {
-  :root {
-    --content-padding-x: 40px;
-  }
-}
-
-@media (min-width: 768px) {
-  :root {
-    --content-padding-x: 60px;
-  }
-}
-
-@media (min-width: 1024px) {
-  :root {
-    --content-padding-x: 80px;
-  }
-}
-
+/* Content max-width for large screens */
 @media (min-width: 1280px) {
   :root {
     --content-max-width: 1400px;
@@ -115,7 +97,6 @@
 
 @media (min-width: 1536px) {
   :root {
-    --section-height: 100vh;
     --content-max-width: 1600px;
   }
 }
@@ -128,12 +109,33 @@
   --font-sans: var(--font-inter);
 }
 
+/* Global box-sizing for predictable layouts */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
   overscroll-behavior-y: none;
   overflow-x: hidden;
+  /* Prevent horizontal overflow */
+  max-width: 100vw;
+}
+
+/* Prevent images and media from causing overflow */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure text elements wrap properly */
+h1, h2, h3, h4, h5, h6, p {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* Smooth scrolling */
@@ -141,47 +143,47 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Fluid Typography */
+/* Fixed Typography */
 h1 {
   font-family: var(--font-inter), sans-serif;
-  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+  font-size: 4rem;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 h2 {
   font-family: var(--font-inter), sans-serif;
-  font-size: clamp(2rem, 4vw + 1rem, 3rem);
+  font-size: 3rem;
   line-height: 1.3;
   letter-spacing: -0.01em;
 }
 
 h3 {
   font-family: var(--font-inter), sans-serif;
-  font-size: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);
+  font-size: 2.25rem;
   line-height: 1.3;
 }
 
 h4 {
   font-family: var(--font-inter), sans-serif;
-  font-size: clamp(1.25rem, 2.5vw + 0.5rem, 1.75rem);
+  font-size: 1.75rem;
   line-height: 1.4;
 }
 
 h5 {
   font-family: var(--font-inter), sans-serif;
-  font-size: clamp(1.125rem, 2vw + 0.5rem, 1.5rem);
+  font-size: 1.5rem;
   line-height: 1.4;
 }
 
 h6 {
   font-family: var(--font-inter), sans-serif;
-  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);
+  font-size: 1.25rem;
   line-height: 1.4;
 }
 
 body {
-  font-size: clamp(1rem, 0.5vw + 0.875rem, 1.125rem);
+  font-size: 1.125rem;
   line-height: 1.7;
 }
 
@@ -471,7 +473,9 @@ body {
 /* Scroll Container */
 .scroll-container {
   width: 100%;
-  overflow-x: hidden;
+  max-width: 100vw;
+  overflow: hidden;
+  position: relative;
 }
 
 /* Full-Screen Section Container */
@@ -479,7 +483,6 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: var(--section-height-min);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -491,11 +494,13 @@ body {
   position: absolute;
   inset: 0;
   z-index: var(--z-background);
-
-  /* Extend beyond section for parallax travel */
-  top: -10%;
-  bottom: -10%;
-  height: 120%;
+  /* Let background fill the entire section naturally */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
 }
 
 /* Content Layer - Primary Content */
@@ -505,13 +510,16 @@ body {
   width: 100%;
   max-width: var(--content-max-width);
   padding: var(--content-padding-y) var(--content-padding-x);
+  box-sizing: border-box;
 
   /* Content alignment */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  min-height: 100%;
+  
+  /* Ensure content is never clipped */
+  flex-shrink: 0;
 }
 
 /* Foreground Layer - Decorative Elements */
@@ -613,77 +621,13 @@ body {
   }
 }
 
-/* Parallax Styles */
-.section-background[data-parallax],
-.section-foreground[data-parallax] {
-  will-change: transform;
-  transition: transform 0.1s linear;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-}
+/* Parallax disabled - static positioning */
 
-/* ========================================
-   Scroll-Triggered Animations
-   ======================================== */
-
-/* Base state for all animated elements */
+/* Scroll animations disabled - all elements visible by default */
 [data-animate] {
-  opacity: 0;
-  transition:
-    opacity var(--duration-slower) var(--ease-out-expo),
-    transform var(--duration-slower) var(--ease-out-expo);
-}
-
-/* Visible state */
-[data-animate].is-visible {
   opacity: 1;
   transform: none;
 }
-
-/* Animation: Fade Up */
-[data-animate="fade-up"] {
-  transform: translateY(60px);
-}
-
-/* Animation: Fade In */
-[data-animate="fade-in"] {
-  transform: none;
-}
-
-/* Animation: Slide from Left */
-[data-animate="slide-left"] {
-  transform: translateX(-80px);
-}
-
-/* Animation: Slide from Right */
-[data-animate="slide-right"] {
-  transform: translateX(80px);
-}
-
-/* Animation: Scale Up */
-[data-animate="scale-up"] {
-  transform: scale(0.9);
-}
-
-/* Animation: Blur In */
-[data-animate="blur-in"] {
-  filter: blur(10px);
-  transition:
-    opacity var(--duration-slower) var(--ease-out-expo),
-    filter var(--duration-slower) var(--ease-out-expo);
-}
-
-[data-animate="blur-in"].is-visible {
-  filter: blur(0);
-}
-
-/* Staggered Animation Delays */
-[data-animate-stagger] > *:nth-child(1) { transition-delay: 0ms; }
-[data-animate-stagger] > *:nth-child(2) { transition-delay: 100ms; }
-[data-animate-stagger] > *:nth-child(3) { transition-delay: 200ms; }
-[data-animate-stagger] > *:nth-child(4) { transition-delay: 300ms; }
-[data-animate-stagger] > *:nth-child(5) { transition-delay: 400ms; }
-[data-animate-stagger] > *:nth-child(6) { transition-delay: 500ms; }
 
 /* CTA Button Styles */
 .cta-button {
@@ -721,4 +665,300 @@ body {
   display: flex;
   gap: var(--space-md);
   flex-wrap: wrap;
+}
+
+/* ========================================
+   Hero Section - Fixed Layout (no dynamic resizing)
+   ======================================== */
+
+/* Main container - fixed sizing, content cut off if viewport too small */
+.hero-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2.5rem 4rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  overflow: hidden;
+}
+
+/* Header - centered title with logo in corner */
+.hero-header {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  overflow: visible;
+}
+
+/* Logo group - absolute top left */
+.hero-logo-group {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.hero-logo-box {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid black;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hero-logo-icon {
+  width: 50%;
+  height: 50%;
+}
+
+.hero-coming-soon-text {
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+/* Title block - centered */
+.hero-title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  margin-left: 12rem;
+}
+
+/* Interior row with arrow + button */
+.hero-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* Hero title - fixed size */
+.hero-title {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-size: 10rem;
+  line-height: 0.9;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.hero-title.no-italic {
+  font-style: normal;
+}
+
+/* Arrow - fixed size */
+.hero-arrow {
+  width: 3.5rem;
+  height: 3.5rem;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+/* CTA button - fixed sizing */
+.hero-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 3rem;
+  border-radius: 9999px;
+  background-color: #d4ff00;
+  font-size: 1.5rem;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color 200ms ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero-cta-button:hover {
+  background-color: #c4ef00;
+}
+
+/* CTA row - arrow always left of button */
+.hero-cta-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 3rem;
+}
+
+/* Image grid - always 4 columns */
+.hero-image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+/* Image card - fixed border radius */
+.hero-image-card {
+  aspect-ratio: 3 / 4;
+  border-radius: 1.5rem;
+  border: 2px solid #d4ff00;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hero-image-placeholder {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #9ca3af;
+}
+
+/* ========================================
+   Section 2: Tagline Section
+   ======================================== */
+
+.tagline-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tagline-text {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 4rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+}
+
+.tagline-underline {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+/* Responsive adjustments for tagline */
+@media (max-width: 768px) {
+  .tagline-text {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tagline-text {
+    font-size: 1.75rem;
+  }
+}
+
+/* ========================================
+   Section 3: Features Section - Fixed Layout (no dynamic resizing)
+   ======================================== */
+
+.features-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.features-heading {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
+  margin: 0;
+  color: #000000;
+  flex-shrink: 0;
+}
+
+.features-italic {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.features-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+  align-items: start;
+  flex-shrink: 0;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.feature-number {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: #d4ff00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  flex-shrink: 0;
+}
+
+.feature-title {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: #000000;
+  flex-shrink: 0;
+}
+
+.feature-description {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #333333;
+  margin: 0;
+  flex-shrink: 0;
 }

@@ -1,26 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
-import { ParallaxController } from '../utils/parallax';
-import { ScrollAnimator } from '../utils/scrollAnimator';
-
 /**
  * ScrollEffects Component
- * Initializes parallax and scroll animation effects on the client side
+ * Previously handled parallax and scroll animations - now disabled
  */
 export default function ScrollEffects() {
-  useEffect(() => {
-    // Initialize parallax controller
-    const parallaxController = new ParallaxController();
-
-    // Initialize scroll animator
-    const scrollAnimator = new ScrollAnimator();
-
-    // Cleanup function
-    return () => {
-      scrollAnimator.destroy();
-    };
-  }, []);
-
-  return null; // This component doesn't render anything
+  // All dynamic scroll effects removed
+  return null;
 }
