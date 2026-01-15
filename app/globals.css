@@ -1305,6 +1305,7 @@ body {
   width: auto;
   height: 600px;
   object-fit: contain;
+  transform: translateX(200px);
 }
 
 /* Override section-content constraints for About section */
