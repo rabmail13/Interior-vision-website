@@ -14,26 +14,6 @@ export default function Home() {
           <div className="hero-container">
             {/* Header Row */}
             <div className="hero-header">
-              {/* Left: Logo and Coming Soon */}
-              <div className="hero-logo-group">
-                <div className="hero-logo-box">
-                  <svg
-                    className="hero-logo-icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <polygon points="12 2 2 22 22 22 12 2" />
-                    <line x1="6" y1="16" x2="18" y2="16" />
-                  </svg>
-                </div>
-                <div className="text-left">
-                  <div className="hero-coming-soon-text">Coming</div>
-                  <div className="hero-coming-soon-text">Soon</div>
-                </div>
-              </div>
-
               {/* Center: Title Block */}
               <div className="hero-title-block">
                 {/* Interior row: Interior div + arrow + button */}

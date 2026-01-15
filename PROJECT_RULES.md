@@ -30,9 +30,16 @@ This project uses **FIXED SIZING ONLY**. Dynamic resizing is never necessary and
 
 #### Files That Enforce This Rule:
 
-- `app/globals.css` - All typography and spacing uses fixed values
+- `app/globals.css` - **COMPLETELY REWRITTEN** with fixed pixel values only
+  - NO `width: 100%` or `height: 100%`
+  - NO `flex: 1` or percentage-based flex
+  - NO `100vh` or `100vw` viewport units
+  - NO `1fr` fractional grid units
+  - NO percentage-based widths/heights
+  - ALL sizing is in fixed pixels (px)
 - `app/components/ScrollEffects.tsx` - Disabled (returns null)
 - `app/utils/parallax.ts` - Disabled (empty implementation)
+- `app/globals-dynamic-OLD.css` - Old file with dynamic resizing (kept for reference)
 
 #### Why This Rule Exists:
 
