@@ -1263,7 +1263,7 @@ body {
 
 .about-content {
   flex: 0 0 50%;
-  max-width: 780px;
+  max-width: 960px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -1285,7 +1285,7 @@ body {
 
 .about-text {
   font-family: var(--font-inter), sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 300;
   line-height: 1.65;
   margin: 0;
