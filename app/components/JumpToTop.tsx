@@ -5,47 +5,20 @@ import { useState, useEffect } from 'react';
 export default function JumpToTop() {
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
-  const [leftText, setLeftText] = useState('');
-  const [rightText, setRightText] = useState('');
-  const fullText = 'Jump to top';
+  const [isPassedFirstSection, setIsPassedFirstSection] = useState(false);
 
-  // Typing animation effect for left button
   useEffect(() => {
-    if (isLeftVisible) {
-      let currentIndex = 0;
-      setLeftText('');
-      const interval = setInterval(() => {
-        if (currentIndex <= fullText.length) {
-          setLeftText(fullText.slice(0, currentIndex));
-          currentIndex++;
-        } else {
-          clearInterval(interval);
-        }
-      }, 50); // 50ms per character for quick typing
-      return () => clearInterval(interval);
-    } else {
-      setLeftText('');
-    }
-  }, [isLeftVisible]);
+    const handleScroll = () => {
+      // Check if user has scrolled past the first viewport
+      const scrolled = window.scrollY > window.innerHeight * 0.8;
+      setIsPassedFirstSection(scrolled);
+    };
 
-  // Typing animation effect for right button
-  useEffect(() => {
-    if (isRightVisible) {
-      let currentIndex = 0;
-      setRightText('');
-      const interval = setInterval(() => {
-        if (currentIndex <= fullText.length) {
-          setRightText(fullText.slice(0, currentIndex));
-          currentIndex++;
-        } else {
-          clearInterval(interval);
-        }
-      }, 50); // 50ms per character for quick typing
-      return () => clearInterval(interval);
-    } else {
-      setRightText('');
-    }
-  }, [isRightVisible]);
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToTop = () => {
     const heroElement = document.getElementById('hero');
@@ -61,6 +34,11 @@ export default function JumpToTop() {
       });
     }
   };
+
+  // Don't render anything if user hasn't scrolled past first section
+  if (!isPassedFirstSection) {
+    return null;
+  }
 
   return (
     <>
@@ -92,11 +70,6 @@ export default function JumpToTop() {
             {/* Inner chevron */}
             <polyline points="18 11 12 5 6 11" />
           </svg>
-          {leftText && (
-            <span className="jump-to-top-text jump-to-top-text-left">
-              {leftText}
-            </span>
-          )}
         </button>
       </div>
 
@@ -128,11 +101,6 @@ export default function JumpToTop() {
             {/* Inner chevron */}
             <polyline points="18 11 12 5 6 11" />
           </svg>
-          {rightText && (
-            <span className="jump-to-top-text jump-to-top-text-right">
-              {rightText}
-            </span>
-          )}
         </button>
       </div>
     </>
