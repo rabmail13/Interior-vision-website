@@ -990,18 +990,18 @@ body {
   flex-shrink: 0;
 }
 
-/* Features Heading Slide Up Animation */
+/* Features Heading Slide In Right Animation */
 .features-heading-animated {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateX(60px);
   transition: 
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .features-visible .features-heading-animated {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 /* Feature Card Slide Up Animation */
@@ -1109,6 +1109,8 @@ body {
   font-family: var(--font-inter), sans-serif;
   font-size: 5rem;
   font-weight: 400;
+  position: relative;
+  z-index: 2;
   line-height: 1.2;
   letter-spacing: -0.01em;
   text-align: center;
@@ -1127,6 +1129,9 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 1;
+  margin-top: -6rem;
   justify-content: center;
   flex-shrink: 0;
 }
