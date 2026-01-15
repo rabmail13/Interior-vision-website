@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import TopNavbar from "./components/TopNavbar";
 import JumpToTop from "./components/JumpToTop";
 import JumpToBottom from "./components/JumpToBottom";
 
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
+        <TopNavbar />
         <JumpToTop />
         <JumpToBottom />
         <main>
