@@ -9,7 +9,7 @@ import HighlightText from './components/HighlightText';
 import FeaturesSection from './components/FeaturesSection';
 import ManageProjectsSection from './components/ManageProjectsSection';
 import BuiltByDesigners from './components/BuiltByDesigners';
-import AnimatedEntrance from './components/AnimatedEntrance';
+import AnimatedEntrance, { StaggerContainer, StaggerItem } from './components/AnimatedEntrance';
 
 export default function Home() {
   const section5VideoRef = useRef<HTMLVideoElement>(null);
@@ -265,26 +265,38 @@ export default function Home() {
             </div>
 
             {/* Button grid - 2 rows x 3 columns */}
-            <div className="learn-grid">
-              <a href="#" className="learn-button">
-                Share Feedback <span className="learn-arrow">→</span>
-              </a>
-              <a href="#" className="learn-button">
-                Email Us <span className="learn-arrow">→</span>
-              </a>
-              <a href="#" className="learn-button">
-                FAQ <span className="learn-arrow">→</span>
-              </a>
-              <a href="#" className="learn-button">
-                Pricing <span className="learn-arrow">→</span>
-              </a>
-              <a href="#" className="learn-button">
-                Blog <span className="learn-arrow">→</span>
-              </a>
-              <a href="#" className="learn-button">
-                Roadmap <span className="learn-arrow">→</span>
-              </a>
-            </div>
+            <StaggerContainer className="learn-grid" staggerDelay={0.1}>
+              <StaggerItem animation="scale">
+                <a href="#" className="learn-button">
+                  Share Feedback <span className="learn-arrow">→</span>
+                </a>
+              </StaggerItem>
+              <StaggerItem animation="scale">
+                <a href="#" className="learn-button">
+                  Email Us <span className="learn-arrow">→</span>
+                </a>
+              </StaggerItem>
+              <StaggerItem animation="scale">
+                <a href="#" className="learn-button">
+                  FAQ <span className="learn-arrow">→</span>
+                </a>
+              </StaggerItem>
+              <StaggerItem animation="scale">
+                <a href="#" className="learn-button">
+                  Pricing <span className="learn-arrow">→</span>
+                </a>
+              </StaggerItem>
+              <StaggerItem animation="scale">
+                <a href="#" className="learn-button">
+                  Blog <span className="learn-arrow">→</span>
+                </a>
+              </StaggerItem>
+              <StaggerItem animation="scale">
+                <a href="#" className="learn-button">
+                  Roadmap <span className="learn-arrow">→</span>
+                </a>
+              </StaggerItem>
+            </StaggerContainer>
           </div>
         </ScrollSection>
       </main>
