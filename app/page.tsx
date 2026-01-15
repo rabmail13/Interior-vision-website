@@ -248,7 +248,7 @@ export default function Home() {
         >
           <div className="learn-container">
             {/* Header */}
-            <AnimatedEntrance animation="fadeUp" duration={0.6} threshold={0.3}>
+            <AnimatedEntrance animation="fadeLeft" duration={1.2}>
               <div className="learn-header">
                 <h2 className="learn-title">
                   Learn <span className="learn-title-italic">More</span>
@@ -258,46 +258,32 @@ export default function Home() {
             </AnimatedEntrance>
 
             {/* Decorative circles logo */}
-            <AnimatedEntrance animation="scale" duration={0.5} delay={0.2} threshold={0.3}>
-              <div className="learn-logo">
-                <div className="learn-circle learn-circle-1"></div>
-                <div className="learn-circle learn-circle-2"></div>
-                <div className="learn-circle learn-circle-3"></div>
-              </div>
-            </AnimatedEntrance>
+            <div className="learn-logo">
+              <div className="learn-circle learn-circle-1"></div>
+              <div className="learn-circle learn-circle-2"></div>
+              <div className="learn-circle learn-circle-3"></div>
+            </div>
 
             {/* Button grid - 2 rows x 3 columns */}
             <div className="learn-grid">
-              <AnimatedEntrance animation="fadeUp" duration={0.5} delay={0.3} threshold={0.3}>
-                <a href="#" className="learn-button">
-                  Share Feedback <span className="learn-arrow">→</span>
-                </a>
-              </AnimatedEntrance>
-              <AnimatedEntrance animation="fadeUp" duration={0.5} delay={0.4} threshold={0.3}>
-                <a href="#" className="learn-button">
-                  Email Us <span className="learn-arrow">→</span>
-                </a>
-              </AnimatedEntrance>
-              <AnimatedEntrance animation="fadeUp" duration={0.5} delay={0.5} threshold={0.3}>
-                <a href="#" className="learn-button">
-                  FAQ <span className="learn-arrow">→</span>
-                </a>
-              </AnimatedEntrance>
-              <AnimatedEntrance animation="fadeUp" duration={0.5} delay={0.6} threshold={0.3}>
-                <a href="#" className="learn-button">
-                  Pricing <span className="learn-arrow">→</span>
-                </a>
-              </AnimatedEntrance>
-              <AnimatedEntrance animation="fadeUp" duration={0.5} delay={0.7} threshold={0.3}>
-                <a href="#" className="learn-button">
-                  Blog <span className="learn-arrow">→</span>
-                </a>
-              </AnimatedEntrance>
-              <AnimatedEntrance animation="fadeUp" duration={0.5} delay={0.8} threshold={0.3}>
-                <a href="#" className="learn-button">
-                  Roadmap <span className="learn-arrow">→</span>
-                </a>
-              </AnimatedEntrance>
+              <a href="#" className="learn-button">
+                Share Feedback <span className="learn-arrow">→</span>
+              </a>
+              <a href="#" className="learn-button">
+                Email Us <span className="learn-arrow">→</span>
+              </a>
+              <a href="#" className="learn-button">
+                FAQ <span className="learn-arrow">→</span>
+              </a>
+              <a href="#" className="learn-button">
+                Pricing <span className="learn-arrow">→</span>
+              </a>
+              <a href="#" className="learn-button">
+                Blog <span className="learn-arrow">→</span>
+              </a>
+              <a href="#" className="learn-button">
+                Roadmap <span className="learn-arrow">→</span>
+              </a>
             </div>
           </div>
         </ScrollSection>

@@ -1491,11 +1491,6 @@ body {
   margin-top: 1rem;
 }
 
-/* Make AnimatedEntrance wrappers behave as grid items */
-.learn-grid > * {
-  display: contents;
-}
-
 .learn-button {
   display: flex;
   align-items: center;
