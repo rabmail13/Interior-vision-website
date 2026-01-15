@@ -9,15 +9,36 @@ import HighlightText from './components/HighlightText';
 import FeaturesSection from './components/FeaturesSection';
 import ManageProjectsSection from './components/ManageProjectsSection';
 import BuiltByDesigners from './components/BuiltByDesigners';
+import AnimatedEntrance from './components/AnimatedEntrance';
 
 export default function Home() {
   const section5VideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      section5VideoRef.current?.play();
-    }, 250);
-    return () => clearTimeout(timer);
+    const videoElement = section5VideoRef.current;
+    if (!videoElement) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Reset video to beginning and play when section comes into view
+            videoElement.currentTime = 0;
+            videoElement.play();
+          } else {
+            // Pause video when section is out of view
+            videoElement.pause();
+          }
+        });
+      },
+      { threshold: 0.5 } // Trigger when 50% of video is visible
+    );
+
+    observer.observe(videoElement);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
   return (
     <>
@@ -192,18 +213,20 @@ export default function Home() {
         >
           <div className="about-container">
             {/* Left content */}
-            <div className="about-content">
-              <h2 className="about-title">About Us</h2>
-              <p className="about-text">
-                We&rsquo;re designers and engineer who have lived through the friction of disjointed and overpriced project management tools.
-              </p>
-              <p className="about-text">
-                By combining design expertise with technical know-how, we created the tool we always wished existed: an intelligent sourcing platform that <span className="about-italic-underline">actually</span> understands what professional designers need.
-              </p>
-              <p className="about-text">
-                Our mission is simple: give designers back their time so they can focus on what they do best—creating beautiful spaces.
-              </p>
-            </div>
+            <AnimatedEntrance animation="fade" duration={0.8} threshold={0.3}>
+              <div className="about-content">
+                <h2 className="about-title">About Us</h2>
+                <p className="about-text">
+                  We&rsquo;re designers and engineer who have lived through the friction of disjointed and overpriced project management tools.
+                </p>
+                <p className="about-text">
+                  By combining design expertise with technical know-how, we created the tool we always wished existed: an intelligent sourcing platform that <span className="about-italic-underline">actually</span> understands what professional designers need.
+                </p>
+                <p className="about-text">
+                  Our mission is simple: give designers back their time so they can focus on what they do best—creating beautiful spaces.
+                </p>
+              </div>
+            </AnimatedEntrance>
 
             {/* Right illustration */}
             <div className="about-illustration">
