@@ -114,8 +114,8 @@ export default function Home() {
               <h2 className="tagline-text tagline-underline">
                 <HighlightText 
                   text="all in one place." 
-                  delay={2225}
-                  duration={600}
+                  delay={700}
+                  duration={480}
                   highlightColor="#d4ff00"
                   textColor="#000000"
                 />
