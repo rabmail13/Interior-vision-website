@@ -1263,7 +1263,7 @@ body {
 
 .about-content {
   flex: 0 0 50%;
-  max-width: 660px;
+  max-width: 780px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
