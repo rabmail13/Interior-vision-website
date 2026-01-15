@@ -17,9 +17,9 @@
   --space-2xl: calc(var(--space-unit) * 13);    /* 104px */
   --space-3xl: calc(var(--space-unit) * 21);    /* 168px */
 
-  /* Section Dimensions */
-  --section-height: 100vh;
-  --section-height-min: 600px;
+  /* Section Dimensions - Fixed */
+  --section-height: 900px;
+  --section-height-min: 900px;
 
   /* Content Container */
   --content-max-width: 1200px;
@@ -88,19 +88,6 @@
   --max-width-content: 1400px;
 }
 
-/* Content max-width for large screens */
-@media (min-width: 1280px) {
-  :root {
-    --content-max-width: 1400px;
-  }
-}
-
-@media (min-width: 1536px) {
-  :root {
-    --content-max-width: 1600px;
-  }
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -121,9 +108,10 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
   overscroll-behavior-y: none;
-  overflow-x: hidden;
-  /* Prevent horizontal overflow */
-  max-width: 100vw;
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 /* Prevent images and media from causing overflow */
@@ -470,23 +458,29 @@ body {
    Vertical Scroll Section Styles
    ======================================== */
 
-/* Scroll Container */
+/* Scroll Container - Fixed width with scroll snap */
 .scroll-container {
   width: 100%;
-  max-width: 100vw;
-  overflow: hidden;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
   position: relative;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
-/* Full-Screen Section Container */
+/* Full-Screen Section Container - Fixed height with snap point */
 .section {
   position: relative;
   width: 100%;
   height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* Background Layer - Fixed or Slow-Moving */
@@ -600,25 +594,23 @@ body {
   width: 100%;
 }
 
-/* Desktop split layout */
-@media (min-width: 768px) {
-  .section-content.split {
-    flex-direction: row;
-    text-align: left;
-  }
+/* Split layout - Fixed (no responsive changes) */
+.section-content.split {
+  flex-direction: row;
+  text-align: left;
+}
 
-  .section-content.split .text-column {
-    max-width: 50%;
-  }
+.section-content.split .text-column {
+  max-width: 50%;
+}
 
-  .section-content.split .media-column {
-    max-width: 45%;
-  }
+.section-content.split .media-column {
+  max-width: 45%;
+}
 
-  /* Reverse order: media left, text right */
-  .section-content.split.reverse {
-    flex-direction: row-reverse;
-  }
+/* Reverse order: media left, text right */
+.section-content.split.reverse {
+  flex-direction: row-reverse;
 }
 
 /* Parallax disabled - static positioning */
@@ -674,8 +666,7 @@ body {
 /* Main container - fixed sizing, content cut off if viewport too small */
 .hero-container {
   width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
+  margin: 0;
   padding: 2.5rem 4rem;
   box-sizing: border-box;
   display: flex;
@@ -735,7 +726,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   flex-shrink: 0;
-  margin-left: 12rem;
+  margin-left: 18rem;
 }
 
 /* Interior row with arrow + button */
@@ -832,17 +823,18 @@ body {
 }
 
 /* ========================================
-   Section 2: Tagline Section
+   Section 2: Tagline Section - Fixed Layout (no dynamic resizing)
    ======================================== */
 
 .tagline-container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  margin: 0;
   padding: 4rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .tagline-text {
@@ -855,6 +847,7 @@ body {
   color: #ffffff;
   text-align: center;
   margin: 0;
+  flex-shrink: 0;
 }
 
 .tagline-underline {
@@ -863,27 +856,13 @@ body {
   text-decoration-thickness: 1px;
 }
 
-/* Responsive adjustments for tagline */
-@media (max-width: 768px) {
-  .tagline-text {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .tagline-text {
-    font-size: 1.75rem;
-  }
-}
-
 /* ========================================
    Section 3: Features Section - Fixed Layout (no dynamic resizing)
    ======================================== */
 
 .features-container {
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
+  margin: 0;
   padding: 6rem 4rem;
   display: flex;
   flex-direction: column;
@@ -961,4 +940,644 @@ body {
   color: #333333;
   margin: 0;
   flex-shrink: 0;
+}
+
+/* ========================================
+   Section 4: Manage Projects - Fixed Layout (no dynamic resizing)
+   ======================================== */
+
+.manage-container {
+  width: 100%;
+  margin: 0;
+  padding: 4rem;
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.manage-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  color: white;
+  max-width: 45%;
+}
+
+.manage-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.manage-title {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: white;
+}
+
+.manage-title-italic {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.manage-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid white;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  width: fit-content;
+}
+
+.manage-section {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.manage-number {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: white;
+  flex-shrink: 0;
+}
+
+.manage-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.manage-subtitle {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+  color: white;
+}
+
+.manage-description {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0;
+  color: white;
+}
+
+/* Devices container */
+.manage-devices {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+  max-width: 50%;
+}
+
+/* Tablet device */
+.manage-device-tablet {
+  position: absolute;
+  width: 450px;
+  height: 320px;
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  border-radius: 24px;
+  padding: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.manage-device-screen {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #bae6fd 0%, #e0f2fe 50%, #a7f3d0 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Phone device */
+.manage-device-phone {
+  position: absolute;
+  width: 180px;
+  height: 360px;
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  border-radius: 32px;
+  padding: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+.manage-device-notch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 20px;
+  background: #111827;
+  border-radius: 0 0 12px 12px;
+  z-index: 3;
+}
+
+.manage-device-screen-small {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #bae6fd 0%, #e0f2fe 60%, #a7f3d0 100%);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Sky and clouds - Tablet */
+.manage-device-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, #bae6fd 0%, #e0f2fe 100%);
+}
+
+.manage-cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.9;
+}
+
+.manage-cloud-1 {
+  width: 120px;
+  height: 50px;
+  top: 30px;
+  right: 40px;
+  box-shadow:
+    60px 10px 0 -10px white,
+    -40px 5px 0 -5px white;
+}
+
+.manage-cloud-2 {
+  width: 80px;
+  height: 35px;
+  top: 80px;
+  left: 30px;
+  box-shadow:
+    40px 5px 0 -5px white,
+    -25px 3px 0 -3px white;
+}
+
+/* Hills - Tablet */
+.manage-device-hills {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: #a7f3d0;
+  overflow: hidden;
+}
+
+.manage-device-hills::before,
+.manage-device-hills::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #86efac;
+}
+
+.manage-device-hills::before {
+  border-radius: 50% 50% 0 0 / 80% 80% 0 0;
+  left: -20%;
+}
+
+.manage-device-hills::after {
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  right: -30%;
+  background: #4ade80;
+}
+
+/* Sky and clouds - Phone */
+.manage-device-sky-small {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, #bae6fd 0%, #e0f2fe 100%);
+}
+
+.manage-cloud-small {
+  position: absolute;
+  background: white;
+  border-radius: 30px;
+  width: 60px;
+  height: 25px;
+  top: 50px;
+  right: 20px;
+  opacity: 0.9;
+  box-shadow:
+    30px 5px 0 -5px white,
+    -20px 3px 0 -3px white;
+}
+
+/* Hills - Phone */
+.manage-device-hills-small {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: #a7f3d0;
+  overflow: hidden;
+}
+
+.manage-device-hills-small::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 150%;
+  height: 120%;
+  background: #4ade80;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ========================================
+   Section 5: Mood Boards to Spec Sheets - Fixed Layout (no dynamic resizing)
+   ======================================== */
+
+.mood-container {
+  width: 100%;
+  margin: 0;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  box-sizing: border-box;
+}
+
+.mood-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mood-title-text {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: #000000;
+}
+
+.mood-title-italic {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  color: #000000;
+}
+
+.mood-arrow {
+  width: 80px;
+  height: 24px;
+  flex-shrink: 0;
+  margin: 0 0.5rem;
+}
+
+.mood-video-box {
+  width: 100%;
+  height: 400px;
+  background-color: #ffffff;
+  border: 2px solid #d4ff00;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mood-video-placeholder {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #666666;
+}
+
+/* ========================================
+   Section 6: Built by Designers - Fixed Layout (no dynamic resizing)
+   ======================================== */
+
+.built-container {
+  width: 100%;
+  margin: 0;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  text-align: center;
+}
+
+.built-heading {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: #000000;
+}
+
+.built-italic {
+  font-style: italic;
+}
+
+.built-subtext {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.built-line {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+  margin: 0;
+  color: #000000;
+}
+
+/* ========================================
+   Section 7: About Us - Fixed Layout (no dynamic resizing)
+   ======================================== */
+
+.about-container {
+  width: 100%;
+  margin: 0;
+  padding: 6rem 6rem;
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.about-content {
+  flex: 0 0 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3rem;
+  color: white;
+  max-width: 520px;
+}
+
+.about-title {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-size: 5.5rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: white;
+}
+
+.about-title-italic {
+  font-style: italic;
+}
+
+.about-logo-stack {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-logo-oval {
+  width: 80px;
+  height: 20px;
+  background-color: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  margin-top: -6px;
+}
+
+.about-logo-oval:first-child {
+  margin-top: 0;
+  background-color: white;
+  border-color: white;
+}
+
+.about-description {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.7;
+  margin: 0;
+  color: white;
+  max-width: 420px;
+}
+
+/* Image cards container */
+.about-cards {
+  position: relative;
+  flex: 0 0 50%;
+  min-height: 520px;
+}
+
+/* Image card base styles */
+.about-image-card {
+  position: absolute;
+  background-color: #333333;
+  border: 2.5px solid #d4e157;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-card-top {
+  width: 90%;
+  max-width: 480px;
+  height: 200px;
+  top: 0;
+  right: 0;
+}
+
+.about-card-bottom {
+  width: 85%;
+  max-width: 440px;
+  height: 170px;
+  bottom: 0;
+  right: 0;
+}
+
+.about-card-placeholder {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ========================================
+   Section 8: Learn More - Fixed Layout (no dynamic resizing)
+   ======================================== */
+
+.learn-container {
+  width: 100%;
+  margin: 0;
+  padding: 5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  box-sizing: border-box;
+}
+
+.learn-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.learn-title {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: #000000;
+}
+
+.learn-title-italic {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.learn-subtitle {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0;
+  color: #000000;
+}
+
+/* Decorative circles logo */
+.learn-logo {
+  position: absolute;
+  top: 5rem;
+  right: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+}
+
+.learn-circle {
+  position: absolute;
+  border: 1.5px solid #000000;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.learn-circle-1 {
+  width: 140px;
+  height: 140px;
+  top: 0;
+  left: 0;
+}
+
+.learn-circle-2 {
+  width: 140px;
+  height: 140px;
+  top: 20px;
+  left: 20px;
+}
+
+.learn-circle-3 {
+  width: 140px;
+  height: 140px;
+  top: 40px;
+  left: 40px;
+}
+
+/* Button grid - 2 rows x 3 columns */
+.learn-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+}
+
+.learn-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+  background-color: #d4ff00;
+  border: none;
+  border-radius: 60px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 100ms ease;
+  white-space: nowrap;
+}
+
+.learn-button:hover {
+  background-color: #c4ef00;
+  transform: translateY(-2px);
+}
+
+.learn-arrow {
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin-left: 1rem;
 }
