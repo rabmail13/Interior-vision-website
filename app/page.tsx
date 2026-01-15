@@ -47,16 +47,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 4 Image Placeholder Boxes - Responsive grid */}
+            {/* Image grid area - content to be added later */}
             <div className="hero-image-grid">
-              {[1, 2, 3, 4].map((item) => (
-                <div
-                  key={item}
-                  className="hero-image-card"
-                >
-                  <span className="hero-image-placeholder">[Image]</span>
-                </div>
-              ))}
             </div>
           </div>
         </ScrollSection>
