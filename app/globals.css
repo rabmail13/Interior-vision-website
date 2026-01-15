@@ -55,6 +55,7 @@
   --z-foreground: 3;
   --z-navigation: 100;
   --z-modal: 200;
+  --z-jump-to-top: 300;
 
   /* Transition Timing */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -453,6 +454,61 @@ body {
     transform: none !important;
     opacity: 1 !important;
     transition: none !important;
+  }
+}
+
+/* ========================================
+   Scroll Indicator (Section 1 Only)
+   ======================================== */
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: var(--z-jump-to-top);
+}
+
+.scroll-indicator-visible {
+  opacity: 0.4;
+}
+
+.scroll-indicator-text {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+}
+
+.scroll-indicator-arrow {
+  width: 24px;
+  height: 24px;
+  color: #1a1a1a;
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator-arrow {
+    animation: none !important;
   }
 }
 
@@ -1527,106 +1583,88 @@ body {
 }
 
 /* ========================================
-   Floating Navigation Menu (Top Left)
+   Jump to Top Buttons (Top Corners)
    ======================================== */
 
-/* Trigger Zone - Invisible hover area in top left corner */
-.floating-nav-trigger {
+/* Trigger Zones - Invisible hover areas in top corners */
+.jump-to-top-trigger {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100px;
-  height: 140px;
-  z-index: 9999;
+  width: 200px;
+  height: 200px;
+  z-index: var(--z-jump-to-top);
   pointer-events: auto;
 }
 
-/* Navigation Menu Container */
-.floating-nav-menu {
+.jump-to-top-trigger-left {
+  left: 0;
+}
+
+.jump-to-top-trigger-right {
+  right: 0;
+}
+
+/* Jump to Top Buttons */
+.jump-to-top-button {
   position: fixed;
   top: 20px;
-  left: 0;
-  z-index: 9999;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 0 12px 12px 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  padding: 1rem 0;
-  width: 200px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(212, 255, 0, 0.95);
+  border: 1px solid rgba(26, 26, 26, 0.1);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  z-index: var(--z-jump-to-top);
 
-  /* Hidden by default - slide in from left */
-  transform: translateX(-100%);
+  /* Hidden by default */
   opacity: 0;
   visibility: hidden;
+  transform: translateY(-10px);
   transition:
-    transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 250ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 250ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 150ms ease;
   pointer-events: none;
 }
 
+.jump-to-top-button-left {
+  left: 20px;
+}
+
+.jump-to-top-button-right {
+  right: 20px;
+}
+
 /* Visible state when hovering trigger zone */
-.floating-nav-menu.floating-nav-visible {
-  transform: translateX(0);
+.jump-to-top-button.jump-to-top-visible {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0);
   pointer-events: auto;
 }
 
-/* Navigation List */
-.floating-nav-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+/* Button hover state */
+.jump-to-top-button:hover {
+  background-color: rgba(196, 239, 0, 1);
+  transform: translateY(-2px);
 }
 
-/* Navigation Items */
-.floating-nav-item {
-  margin: 0;
-  padding: 0;
-}
-
-/* Navigation Links */
-.floating-nav-link {
-  display: block;
-  width: 100%;
-  padding: 0.75rem 1.5rem;
-  font-family: var(--font-inter), sans-serif;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--foreground);
-  text-align: left;
-  text-decoration: none;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition:
-    background-color 150ms ease,
-    color 150ms ease,
-    padding-left 150ms ease;
-}
-
-/* Link hover state */
-.floating-nav-link:hover {
-  background-color: rgba(212, 255, 0, 0.2);
-  color: #000000;
-  padding-left: 2rem;
-}
-
-/* Special styling for first and last items */
-.floating-nav-item:first-child .floating-nav-link,
-.floating-nav-item:last-child .floating-nav-link {
-  font-weight: 600;
+/* Icon styling */
+.jump-to-top-icon {
+  width: 24px;
+  height: 24px;
   color: #1a1a1a;
+  flex-shrink: 0;
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .floating-nav-menu,
-  .floating-nav-link {
+  .jump-to-top-button {
     transition: none !important;
   }
 }

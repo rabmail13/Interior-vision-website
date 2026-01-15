@@ -10,6 +10,7 @@ import FeaturesSection from './components/FeaturesSection';
 import ManageProjectsSection from './components/ManageProjectsSection';
 import BuiltByDesigners from './components/BuiltByDesigners';
 import AnimatedEntrance, { StaggerContainer, StaggerItem } from './components/AnimatedEntrance';
+import ScrollIndicator from './components/ScrollIndicator';
 
 export default function Home() {
   const section5VideoRef = useRef<HTMLVideoElement>(null);
@@ -125,6 +126,9 @@ export default function Home() {
             <div className="hero-image-grid">
             </div>
           </div>
+
+          {/* Scroll indicator */}
+          <ScrollIndicator />
         </ScrollSection>
 
         {/* Section 2: Tagline */}
