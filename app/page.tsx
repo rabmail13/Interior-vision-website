@@ -6,6 +6,7 @@ import HighlightText from './components/HighlightText';
 import FeaturesSection from './components/FeaturesSection';
 import AutoplayVideo from './components/AutoplayVideo';
 import ManageProjectsSection from './components/ManageProjectsSection';
+import AnimatedEntrance from './components/AnimatedEntrance';
 
 export default function Home() {
   return (
@@ -152,11 +153,17 @@ export default function Home() {
         >
           <div className="built-container">
             <h2 className="built-heading">
-              Built by Designers, <span className="built-italic">For Designers.</span>
+              <TypingText typingSpeed={20}>
+                Built by Designers, <span className="built-italic">For Designers.</span>
+              </TypingText>
             </h2>
             <div className="built-subtext">
-              <p className="built-line">No gimicks.</p>
-              <p className="built-line">No overpriced subscriptions.</p>
+              <AnimatedEntrance animation="fadeUp" delay={1.5} duration={0.5}>
+                <p className="built-line">No gimicks.</p>
+              </AnimatedEntrance>
+              <AnimatedEntrance animation="fadeUp" delay={1.25} duration={0.5}>
+                <p className="built-line">No overpriced subscriptions.</p>
+              </AnimatedEntrance>
             </div>
           </div>
         </ScrollSection>
