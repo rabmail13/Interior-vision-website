@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function TopNavbar() {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,11 +44,11 @@ export default function TopNavbar() {
   }
 
   const navLinks = [
-    { label: 'Home', href: '#hero' },
-    { label: 'About', href: '#about-us' },
-    { label: 'Blog', href: '#learn-more' },
-    { label: 'Contact', href: '#learn-more' },
-    { label: 'Join Waitlist', href: '#hero', highlight: true }
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact', href: '/contact' },
+    { label: 'Join Waitlist', href: '/waitlist', highlight: true }
   ];
 
   return (
@@ -87,13 +88,13 @@ export default function TopNavbar() {
             {/* Navigation Links */}
             <div className="top-navbar-links">
               {navLinks.map((link, index) => (
-                <a
+                <Link
                   key={index}
                   href={link.href}
                   className={`top-navbar-link ${link.highlight ? 'top-navbar-link-highlight' : ''}`}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

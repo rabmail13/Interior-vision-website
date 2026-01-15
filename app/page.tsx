@@ -100,7 +100,7 @@ export default function Home() {
                       href="#contact"
                       className="hero-cta-button"
                     >
-                      Try for Free
+                      Join Waitlist
                     </a>
                   </div>
                 </div>
