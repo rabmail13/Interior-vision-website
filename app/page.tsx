@@ -26,29 +26,46 @@ export default function Home() {
               <div className="hero-title-block">
               {/* Title elements wrapper */}
               <div className="hero-titles-wrapper">
-                {/* Interior row: Interior div + arrow + button */}
+                {/* Interior row: Just Interior div */}
                 <div className="hero-title-row">
                   <div className="hero-title-word">
+                    <svg 
+                      className="hero-glasses-icon" 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="1.5" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    >
+                      <circle cx="6" cy="15" r="4"/>
+                      <circle cx="18" cy="15" r="4"/>
+                      <path d="M14 15a2 2 0 0 0-4 0"/>
+                      <path d="M2.5 13 5 7c.7-1.3 1.4-2 3-2"/>
+                      <path d="M21.5 13 19 7c-.7-1.3-1.4-2-3-2"/>
+                    </svg>
                     <h1 className="hero-title no-italic hero-title-rotate-in">Interior</h1>
                   </div>
-                  <div className="hero-cta-row">
-                    <svg
-                      className="hero-arrow"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                    >
-                      <line x1="4" y1="12" x2="20" y2="12" />
-                      <polyline points="16 8 20 12 16 16" />
-                    </svg>
-                    <a
-                      href="#contact"
-                      className="hero-cta-button"
-                    >
-                      Try for Free
-                    </a>
-                  </div>
+                </div>
+                {/* CTA row - centered between titles */}
+                <div className="hero-cta-row">
+                  <svg
+                    className="hero-arrow"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <polyline points="16 8 20 12 16 16" />
+                  </svg>
+                  <a
+                    href="#contact"
+                    className="hero-cta-button"
+                  >
+                    Try for Free
+                  </a>
                 </div>
                 {/* Vision in its own div */}
                 <div className="hero-title-word">
@@ -161,7 +178,7 @@ export default function Home() {
               <AnimatedEntrance animation="fadeUp" delay={1.5} duration={0.5}>
                 <p className="built-line">No gimicks.</p>
               </AnimatedEntrance>
-              <AnimatedEntrance animation="fadeUp" delay={1.25} duration={0.5}>
+              <AnimatedEntrance animation="fadeUp" delay={2.0} duration={0.5}>
                 <p className="built-line">No overpriced subscriptions.</p>
               </AnimatedEntrance>
             </div>
