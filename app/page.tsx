@@ -151,18 +151,15 @@ export default function Home() {
           contentAlignment="center"
           backgroundColor="#ffffff"
         >
-          <div className="video-container">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="section-video"
-            >
-              <source src="/FROM MOOD BOARDS (2).mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="section-5-video"
+          >
+            <source src="/FROM MOOD BOARDS (2).mp4" type="video/mp4" />
+          </video>
         </ScrollSection>
 
         {/* Section 6: Built by Designers */}

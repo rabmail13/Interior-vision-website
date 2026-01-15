@@ -1096,7 +1096,7 @@ body {
 .manage-projects-container {
   width: 100%;
   margin: 0;
-  padding: 2rem 4rem;
+  padding: 10rem 4rem 2rem 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1170,29 +1170,11 @@ body {
    Section 5: Video Section - Fixed Layout (no dynamic resizing)
    ======================================== */
 
-.video-container {
-  /* Break out of section-content constraints */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 800px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-
-.section-video {
+.section-5-video {
   width: 100%;
-  height: auto;
-  max-height: 80vh;
-  border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  height: 100vh;
   object-fit: contain;
   display: block;
-  background-color: #000000;
 }
 
 /* ========================================
@@ -1310,18 +1292,18 @@ body {
 }
 
 .about-illustration {
-  flex: 0 1 45%;
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  max-height: 70vh;
+  justify-content: flex-end;
+  min-width: 0;
+  margin-left: 3rem;
 }
 
 .about-image {
-  width: 100%;
-  max-width: 520px;
-  height: auto;
-  max-height: 550px;
+  max-width: none;
+  width: auto;
+  height: 600px;
   object-fit: contain;
 }
 
