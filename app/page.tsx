@@ -5,7 +5,7 @@ import TypingText from './components/TypingText';
 import HighlightText from './components/HighlightText';
 import FeaturesSection from './components/FeaturesSection';
 import ManageProjectsSection from './components/ManageProjectsSection';
-import AnimatedEntrance from './components/AnimatedEntrance';
+import BuiltByDesigners from './components/BuiltByDesigners';
 
 export default function Home() {
   return (
@@ -169,21 +169,7 @@ export default function Home() {
           contentAlignment="center"
           backgroundColor="#f5f5f0"
         >
-          <div className="built-container">
-            <h2 className="built-heading">
-              <TypingText typingSpeed={20}>
-                Built by Designers, <span className="built-italic">For Designers.</span>
-              </TypingText>
-            </h2>
-            <div className="built-subtext">
-              <AnimatedEntrance animation="fadeUp" delay={1.5} duration={0.5}>
-                <p className="built-line">No gimicks.</p>
-              </AnimatedEntrance>
-              <AnimatedEntrance animation="fadeUp" delay={2.0} duration={0.5}>
-                <p className="built-line">No overpriced subscriptions.</p>
-              </AnimatedEntrance>
-            </div>
-          </div>
+          <BuiltByDesigners />
         </ScrollSection>
 
         {/* Section 7: About Us */}
