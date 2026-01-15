@@ -6,10 +6,10 @@ export default function ScrollIndicator() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Fade in after 2.5 seconds
+    // Fade in after 4 seconds
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 2500);
+    }, 4000);
 
     return () => clearTimeout(timer);
   }, []);
