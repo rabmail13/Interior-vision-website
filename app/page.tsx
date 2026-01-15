@@ -4,7 +4,6 @@ import ColourfulText from './components/ColourfulText';
 import TypingText from './components/TypingText';
 import HighlightText from './components/HighlightText';
 import FeaturesSection from './components/FeaturesSection';
-import AutoplayVideo from './components/AutoplayVideo';
 import ManageProjectsSection from './components/ManageProjectsSection';
 import AnimatedEntrance from './components/AnimatedEntrance';
 
@@ -26,26 +25,32 @@ export default function Home() {
               <div className="hero-title-block">
               {/* Title elements wrapper */}
               <div className="hero-titles-wrapper">
-                {/* Interior row: Interior + CTA */}
+                {/* Interior row */}
+                <div className="hero-title-word">
+                  <svg 
+                    className="hero-glasses-icon" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="1.5" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="6" cy="15" r="4"/>
+                    <circle cx="18" cy="15" r="4"/>
+                    <path d="M14 15a2 2 0 0 0-4 0"/>
+                    <path d="M2.5 13 5 7c.7-1.3 1.4-2 3-2"/>
+                    <path d="M21.5 13 19 7c-.7-1.3-1.4-2-3-2"/>
+                  </svg>
+                  <h1 className="hero-title no-italic hero-title-rotate-in">Interior</h1>
+                </div>
+                {/* Vision row with CTA */}
                 <div className="hero-title-row">
                   <div className="hero-title-word">
-                    <svg 
-                      className="hero-glasses-icon" 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      strokeWidth="1.5" 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round"
-                    >
-                      <circle cx="6" cy="15" r="4"/>
-                      <circle cx="18" cy="15" r="4"/>
-                      <path d="M14 15a2 2 0 0 0-4 0"/>
-                      <path d="M2.5 13 5 7c.7-1.3 1.4-2 3-2"/>
-                      <path d="M21.5 13 19 7c-.7-1.3-1.4-2-3-2"/>
-                    </svg>
-                    <h1 className="hero-title no-italic hero-title-rotate-in">Interior</h1>
+                    <h1 className="hero-title">
+                      <TypingText>Vision</TypingText>
+                    </h1>
                   </div>
                   <div className="hero-cta-row">
                     <svg
@@ -65,12 +70,6 @@ export default function Home() {
                       Try for Free
                     </a>
                   </div>
-                </div>
-                {/* Vision in its own div */}
-                <div className="hero-title-word">
-                  <h1 className="hero-title">
-                    <TypingText>Vision</TypingText>
-                  </h1>
                 </div>
               </div>
               
@@ -106,7 +105,7 @@ export default function Home() {
           <div className="tagline-container">
             <div className="tagline-line">
               <h2 className="tagline-text">
-                <TypingText typingSpeed={25} startDelay={150}>
+                <TypingText typingSpeed={20} startDelay={150}>
                   From <ColourfulText text="inspiration" /> to <ColourfulText text="implementation" />,
                 </TypingText>
               </h2>
@@ -153,10 +152,16 @@ export default function Home() {
           backgroundColor="#ffffff"
         >
           <div className="video-container">
-            <AutoplayVideo
-              src="/FROM MOOD BOARDS (2).mp4"
-              className="mood-video"
-            />
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="section-video"
+            >
+              <source src="/FROM MOOD BOARDS (2).mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </ScrollSection>
 
