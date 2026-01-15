@@ -1673,3 +1673,112 @@ body {
     transition: none !important;
   }
 }
+
+/* ========================================
+   Jump to Bottom Buttons (Bottom Corners)
+   ======================================== */
+
+/* Trigger Zones - Invisible hover areas in bottom corners */
+.jump-to-bottom-trigger {
+  position: fixed;
+  bottom: 0;
+  width: 200px;
+  height: 200px;
+  z-index: var(--z-jump-to-top);
+  pointer-events: auto;
+}
+
+.jump-to-bottom-trigger-left {
+  left: 0;
+}
+
+.jump-to-bottom-trigger-right {
+  right: 0;
+}
+
+/* Jump to Bottom Buttons */
+.jump-to-bottom-button {
+  position: fixed;
+  bottom: 20px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(212, 255, 0, 0.95);
+  border: 1px solid rgba(26, 26, 26, 0.1);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  z-index: var(--z-jump-to-top);
+
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 250ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 250ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 150ms ease;
+  pointer-events: none;
+}
+
+.jump-to-bottom-button-left {
+  left: 20px;
+}
+
+.jump-to-bottom-button-right {
+  right: 20px;
+}
+
+/* Visible state when hovering trigger zone */
+.jump-to-bottom-button.jump-to-bottom-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Button hover state */
+.jump-to-bottom-button:hover {
+  background-color: rgba(196, 239, 0, 1);
+  transform: translateY(2px);
+}
+
+/* Icon styling */
+.jump-to-bottom-icon {
+  width: 24px;
+  height: 24px;
+  color: #1a1a1a;
+  flex-shrink: 0;
+}
+
+/* Typing text next to button */
+.jump-to-bottom-text {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+.jump-to-bottom-text-left {
+  position: fixed;
+  left: 76px;
+  bottom: 32px;
+}
+
+.jump-to-bottom-text-right {
+  position: fixed;
+  right: 76px;
+  bottom: 32px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .jump-to-bottom-button {
+    transition: none !important;
+  }
+}

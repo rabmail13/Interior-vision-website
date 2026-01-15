@@ -5,20 +5,6 @@ import { useState, useEffect } from 'react';
 export default function JumpToTop() {
   const [isLeftVisible, setIsLeftVisible] = useState(false);
   const [isRightVisible, setIsRightVisible] = useState(false);
-  const [isPassedFirstSection, setIsPassedFirstSection] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Check if user has scrolled past the first viewport
-      const scrolled = window.scrollY > window.innerHeight * 0.8;
-      setIsPassedFirstSection(scrolled);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial state
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const scrollToTop = () => {
     const heroElement = document.getElementById('hero');
@@ -34,11 +20,6 @@ export default function JumpToTop() {
       });
     }
   };
-
-  // Don't render anything if user hasn't scrolled past first section
-  if (!isPassedFirstSection) {
-    return null;
-  }
 
   return (
     <>
