@@ -4,6 +4,8 @@ import ColourfulText from './components/ColourfulText';
 import TypingText from './components/TypingText';
 import HighlightText from './components/HighlightText';
 import FeaturesSection from './components/FeaturesSection';
+import AutoplayVideo from './components/AutoplayVideo';
+import ManageProjectsSection from './components/ManageProjectsSection';
 
 export default function Home() {
   return (
@@ -123,50 +125,21 @@ export default function Home() {
           contentAlignment="center"
           backgroundColor="#000000"
         >
-          <div className="manage-projects-container">
-            <h2 className="manage-projects-heading">
-              Manage all of your projects in <span className="manage-projects-italic">one place</span>
-            </h2>
-            <div className="manage-projects-image-wrapper">
-              <img
-                src="/InteriorVision main website (8).png"
-                alt="Visual Product Search across devices"
-                className="manage-projects-image"
-              />
-            </div>
-          </div>
+          <ManageProjectsSection />
         </ScrollSection>
 
-        {/* Section 5: Mood Boards to Spec Sheets */}
+        {/* Section 5: Video Section */}
         <ScrollSection
           id="mood-boards"
           className="section-5"
           contentAlignment="center"
           backgroundColor="#ffffff"
         >
-          <div className="mood-container">
-            {/* Title with arrow */}
-            <div className="mood-header">
-              <span className="mood-title-text">From</span>
-              <span className="mood-title-italic">Mood Boards</span>
-              <svg
-                className="mood-arrow"
-                viewBox="0 0 100 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <line x1="0" y1="12" x2="90" y2="12" />
-                <polyline points="85 8 90 12 85 16" />
-              </svg>
-              <span className="mood-title-text">to</span>
-              <span className="mood-title-italic">Spec Sheets</span>
-            </div>
-
-            {/* Video placeholder box */}
-            <div className="mood-video-box">
-              <span className="mood-video-placeholder">[video placeholder]</span>
-            </div>
+          <div className="video-container">
+            <AutoplayVideo
+              src="/FROM MOOD BOARDS (2).mp4"
+              className="mood-video"
+            />
           </div>
         </ScrollSection>
 
