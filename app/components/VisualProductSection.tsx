@@ -40,7 +40,7 @@ export default function VisualProductSection() {
         alignItems: 'center',
         width: '100%',
         height: '100%',
-        gap: '3rem',
+        gap: '1.5rem',
       }}
     >
       <h2

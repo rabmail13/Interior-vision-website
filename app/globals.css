@@ -751,6 +751,9 @@ body {
 
 .hero-title-word {
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 /* Interior row with arrow + button */
@@ -776,6 +779,18 @@ body {
 
 .hero-title.no-italic {
   font-style: normal;
+}
+
+/* Hero glasses icon - above Interior */
+.hero-glasses-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  align-self: center;
+  color: #1a1a1a;
+  animation: rotate-in-entrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  animation-fill-mode: both;
 }
 
 /* Hero title rotate-in entrance animation */
@@ -1013,6 +1028,11 @@ body {
   justify-content: center;
   flex-shrink: 0;
   margin: 0 auto;
+}
+
+.feature-number svg {
+  width: 2.1rem;
+  height: 2.1rem;
 }
 
 .feature-title {
@@ -1515,6 +1535,7 @@ body {
   letter-spacing: -0.01em;
   margin: 0;
   color: white;
+  text-align: left;
 }
 
 .about-logo-stack {
@@ -1548,6 +1569,44 @@ body {
   margin: 0;
   color: white;
   text-align: left;
+}
+
+.about-text {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.7;
+  margin: 0;
+  color: white;
+  text-align: left;
+}
+
+.about-italic {
+  font-style: italic;
+}
+
+.about-illustration {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2rem;
+}
+
+.about-svg {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  color: white;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(1.05);
 }
 
 /* Devices container - stacked vertically */
@@ -1882,4 +1941,12 @@ body {
 
 .learn-arrow {
   font-size: 1.125rem;
+}
+
+.learn-button-wrapper {
+  display: contents;
+}
+
+.learn-button-wrapper .learn-button {
+  width: 100%;
 }
