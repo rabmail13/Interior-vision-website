@@ -50,7 +50,7 @@ export default function Home() {
                 {/* Vision in its own div */}
                 <div className="hero-title-word">
                   <h1 className="hero-title">
-                    <TypingText startDelay={0}>Vision</TypingText>
+                    <TypingText startDelay={300} typingSpeed={25}>Vision</TypingText>
                   </h1>
                 </div>
               </div>
@@ -66,7 +66,7 @@ export default function Home() {
                   "Your vision, streamlined."
                 ]}
                 interval={3200}
-                initialDelay={0}
+                initialDelay={1000}
                 className="hero-rotating-text"
               />
             </div>
