@@ -123,61 +123,16 @@ export default function Home() {
           contentAlignment="center"
           backgroundColor="#000000"
         >
-          <div className="manage-container">
-            {/* Left content */}
-            <div className="manage-content">
-              <div className="manage-header">
-                <h2 className="manage-title">
-                  MANAGE YOUR<br />
-                  PROJECTS IN <span className="manage-title-italic">ONE PLACE</span>
-                </h2>
-                <div className="manage-logo-badge">INTERIOR VISION</div>
-              </div>
-
-              <div className="manage-section">
-                <div className="manage-number">01</div>
-                <div className="manage-text-block">
-                  <h3 className="manage-subtitle">Background</h3>
-                  <p className="manage-description">
-                    Interior designers waste hours juggling multiple subscriptions—mood board software, sourcing platforms, spreadsheet-based spec sheets, and project trackers.
-                  </p>
-                </div>
-              </div>
-
-              <div className="manage-section">
-                <div className="manage-number">02</div>
-                <div className="manage-text-block">
-                  <h3 className="manage-subtitle">Solution</h3>
-                  <p className="manage-description">
-                    Replace 3-4 tool subscriptions with one platform. Eliminate spreadsheet chaos. Deliver faster, more accurate proposals to clients—and get back to designing.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right devices */}
-            <div className="manage-devices">
-              {/* Tablet */}
-              <div className="manage-device-tablet">
-                <div className="manage-device-screen">
-                  <div className="manage-device-sky">
-                    <div className="manage-cloud manage-cloud-1"></div>
-                    <div className="manage-cloud manage-cloud-2"></div>
-                  </div>
-                  <div className="manage-device-hills"></div>
-                </div>
-              </div>
-
-              {/* Phone */}
-              <div className="manage-device-phone">
-                <div className="manage-device-notch"></div>
-                <div className="manage-device-screen-small">
-                  <div className="manage-device-sky-small">
-                    <div className="manage-cloud-small"></div>
-                  </div>
-                  <div className="manage-device-hills-small"></div>
-                </div>
-              </div>
+          <div className="manage-projects-container">
+            <h2 className="manage-projects-heading">
+              Manage all of your projects in <span className="manage-projects-italic">one place</span>
+            </h2>
+            <div className="manage-projects-image-wrapper">
+              <img
+                src="/InteriorVision main website (8).png"
+                alt="Visual Product Search across devices"
+                className="manage-projects-image"
+              />
             </div>
           </div>
         </ScrollSection>
