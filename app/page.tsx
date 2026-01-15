@@ -84,7 +84,7 @@ export default function Home() {
                   "Your vision, streamlined."
                 ]}
                 interval={3000}
-                initialDelay={3000}
+                initialDelay={1500}
                 className="hero-rotating-text"
               />
             </div>
@@ -114,7 +114,7 @@ export default function Home() {
               <h2 className="tagline-text tagline-underline">
                 <HighlightText 
                   text="all in one place." 
-                  delay={700}
+                  delay={1500}
                   duration={480}
                   highlightColor="#d4ff00"
                   textColor="#000000"
