@@ -3,6 +3,7 @@ import RotatingText from './components/RotatingText';
 import ColourfulText from './components/ColourfulText';
 import TypingText from './components/TypingText';
 import HighlightText from './components/HighlightText';
+import FeaturesSection from './components/FeaturesSection';
 
 export default function Home() {
   return (
@@ -25,7 +26,7 @@ export default function Home() {
                 {/* Interior row: Interior div + arrow + button */}
                 <div className="hero-title-row">
                   <div className="hero-title-word">
-                    <h1 className="hero-title no-italic">Interior</h1>
+                    <h1 className="hero-title no-italic hero-title-rotate-in">Interior</h1>
                   </div>
                   <div className="hero-cta-row">
                     <svg
@@ -48,7 +49,9 @@ export default function Home() {
                 </div>
                 {/* Vision in its own div */}
                 <div className="hero-title-word">
-                  <h1 className="hero-title">Vision</h1>
+                  <h1 className="hero-title">
+                    <TypingText startDelay={0}>Vision</TypingText>
+                  </h1>
                 </div>
               </div>
               
@@ -62,7 +65,8 @@ export default function Home() {
                   "Design smarter, not harder.",
                   "Your vision, streamlined."
                 ]}
-                interval={3000}
+                interval={3200}
+                initialDelay={0}
                 className="hero-rotating-text"
               />
             </div>
@@ -109,53 +113,7 @@ export default function Home() {
           contentAlignment="center"
           backgroundColor="#f5f5f0"
         >
-          <div className="features-container">
-            <h2 className="features-heading">
-              Key <span className="features-italic">Features</span>
-            </h2>
-
-            <div className="features-grid">
-              {/* Feature 01 */}
-              <div className="feature-card">
-                <div className="feature-number">01</div>
-                <h3 className="feature-title">
-                  Full-Suite<br />Project Management
-                </h3>
-                <p className="feature-description">
-                  Communicate with Clients<br />
-                  Manage products, projects, &<br />
-                  Clients in one interface
-                </p>
-              </div>
-
-              {/* Feature 02 */}
-              <div className="feature-card">
-                <div className="feature-number">02</div>
-                <h3 className="feature-title">
-                  Intelligent Inventory<br />Management
-                </h3>
-                <p className="feature-description">
-                  One-click save → <br />
-                  organized procurement<br />
-                  collections via our Browser<br />
-                  Extension
-                </p>
-              </div>
-
-              {/* Feature 03 */}
-              <div className="feature-card">
-                <div className="feature-number">03</div>
-                <h3 className="feature-title">
-                  Automated<br />workflows to<br />save you time
-                </h3>
-                <p className="feature-description">
-                  Upload → AI Match<br />
-                  Auto-generated spec sheets<br />
-                  & deliverables
-                </p>
-              </div>
-            </div>
-          </div>
+          <FeaturesSection />
         </ScrollSection>
 
         {/* Section 4: Manage Projects */}
