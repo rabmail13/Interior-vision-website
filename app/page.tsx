@@ -11,6 +11,8 @@ import ManageProjectsSection from './components/ManageProjectsSection';
 import BuiltByDesigners from './components/BuiltByDesigners';
 import AnimatedEntrance, { StaggerContainer, StaggerItem } from './components/AnimatedEntrance';
 import ScrollIndicator from './components/ScrollIndicator';
+import JumpToTop from './components/JumpToTop';
+import JumpToBottom from './components/JumpToBottom';
 
 export default function Home() {
   const section5VideoRef = useRef<HTMLVideoElement>(null);
@@ -43,6 +45,8 @@ export default function Home() {
   }, []);
   return (
     <>
+      <JumpToTop />
+      <JumpToBottom />
       <main className="scroll-container">
         {/* Section 1: Hero */}
         <ScrollSection
