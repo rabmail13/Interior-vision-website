@@ -12,6 +12,7 @@ import ScrollIndicator from './components/ScrollIndicator';
 import JumpToTop from './components/JumpToTop';
 import JumpToBottom from './components/JumpToBottom';
 import Footer from './components/Footer';
+import TopNavbar from './components/TopNavbar';
 
 export default function Home() {
   const section5VideoRef = useRef<HTMLVideoElement>(null);
@@ -54,6 +55,7 @@ export default function Home() {
           contentAlignment="center"
           backgroundColor="#f5f5f0"
         >
+          <TopNavbar />
           <div className="hero-container">
             {/* Header Row */}
             <div className="hero-header">
