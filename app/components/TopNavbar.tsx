@@ -66,7 +66,6 @@ export default function TopNavbar() {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Contact', href: '/contact' },
     { label: 'Join Waitlist', href: '/waitlist', highlight: true }
   ];
 

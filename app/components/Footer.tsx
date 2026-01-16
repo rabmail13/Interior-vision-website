@@ -10,7 +10,6 @@ export default function Footer() {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Contact', href: '/contact' },
   ];
 
   const resourceLinks = [

@@ -1,65 +1,41 @@
-'use client';
-
 import { StaggerContainer, StaggerItem } from '../components/AnimatedEntrance';
 import TopNavbar from '../components/TopNavbar';
 import Footer from '../components/Footer';
+import PostCard from '../components/blog/PostCard';
+import { getAllPosts } from '@/lib/blog';
 
 export default function BlogPage() {
+  const posts = getAllPosts();
+
   return (
     <main className="scroll-container">
       <div className="top-navbar-static">
         <TopNavbar />
       </div>
-      <section id="blog" className="section-8" style={{ backgroundColor: '#f5f5f0', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div className="learn-container">
+      <section id="blog" className="section-8" style={{ backgroundColor: '#f5f5f0', minHeight: '100vh', paddingTop: '120px', paddingBottom: '80px' }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
           {/* Header */}
-          <div className="learn-header">
-            <h2 className="learn-title">
-              Our <span className="learn-title-italic">Blog</span>
-            </h2>
-            <p className="learn-subtitle">Insights, tips, and inspiration for interior designers</p>
+          <div className="mb-12 max-w-2xl">
+            <h1 className="text-6xl md:text-7xl font-normal mb-4">
+              Our <span className="italic font-serif">Blog</span>
+            </h1>
+            <p className="text-lg text-gray-600">Insights, tips, and inspiration for interior designers</p>
           </div>
 
-          {/* Decorative circles logo */}
-          <div className="learn-logo">
-            <div className="learn-circle learn-circle-1"></div>
-            <div className="learn-circle learn-circle-2"></div>
-            <div className="learn-circle learn-circle-3"></div>
-          </div>
-
-          {/* Blog grid - placeholder for blog posts */}
-          <StaggerContainer className="learn-grid" staggerDelay={0.1}>
-            <StaggerItem animation="scale">
-              <a href="#" className="learn-button">
-                Design Tips <span className="learn-arrow">→</span>
-              </a>
-            </StaggerItem>
-            <StaggerItem animation="scale">
-              <a href="#" className="learn-button">
-                Industry Trends <span className="learn-arrow">→</span>
-              </a>
-            </StaggerItem>
-            <StaggerItem animation="scale">
-              <a href="#" className="learn-button">
-                Case Studies <span className="learn-arrow">→</span>
-              </a>
-            </StaggerItem>
-            <StaggerItem animation="scale">
-              <a href="#" className="learn-button">
-                Tool Reviews <span className="learn-arrow">→</span>
-              </a>
-            </StaggerItem>
-            <StaggerItem animation="scale">
-              <a href="#" className="learn-button">
-                Tutorials <span className="learn-arrow">→</span>
-              </a>
-            </StaggerItem>
-            <StaggerItem animation="scale">
-              <a href="#" className="learn-button">
-                News <span className="learn-arrow">→</span>
-              </a>
-            </StaggerItem>
-          </StaggerContainer>
+          {/* Blog Posts Grid */}
+          {posts.length > 0 ? (
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8" staggerDelay={0.1}>
+              {posts.map((post) => (
+                <StaggerItem key={post.slug} animation="scale">
+                  <PostCard post={post} />
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          ) : (
+            <div className="text-center py-20">
+              <p className="text-2xl text-gray-500">No blog posts yet. Check back soon!</p>
+            </div>
+          )}
         </div>
       </section>
       <Footer />
