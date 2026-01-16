@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 import ScrollSection from './components/ScrollSection';
-import RotatingText from './components/RotatingText';
 import TypingText from './components/TypingText';
 import HighlightText from './components/HighlightText';
 import FeaturesSection from './components/FeaturesSection';
@@ -62,7 +61,7 @@ export default function Home() {
               <div className="hero-title-block">
               {/* Title elements wrapper */}
               <div className="hero-titles-wrapper">
-                {/* Interior row */}
+                {/* Interior and Vision row */}
                 <div className="hero-title-word">
                   <svg 
                     className="hero-glasses-icon" 
@@ -81,49 +80,13 @@ export default function Home() {
                     <path d="M21.5 13 19 7c-.7-1.3-1.4-2-3-2"/>
                   </svg>
                   <h1 className="hero-title no-italic hero-title-rotate-in">Interior</h1>
-                </div>
-                {/* Vision row with CTA */}
-                <div className="hero-title-row">
-                  <div className="hero-title-word">
-                    <h1 className="hero-title">
-                      <TypingText>Vision</TypingText>
-                    </h1>
-                  </div>
-                  <div className="hero-cta-row">
-                    <svg
-                      className="hero-arrow"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                    >
-                      <line x1="4" y1="12" x2="20" y2="12" />
-                      <polyline points="16 8 20 12 16 16" />
-                    </svg>
-                    <a
-                      href="#contact"
-                      className="hero-cta-button"
-                    >
-                      Join Waitlist
-                    </a>
-                  </div>
+                  <h1 className="hero-title">
+                    <TypingText>Vision</TypingText>
+                  </h1>
                 </div>
               </div>
               
               </div>
-            </div>
-
-            {/* Rotating text preview - outside hero-title-block */}
-            <div className="hero-rotating-wrapper">
-              <RotatingText
-                texts={[
-                  "Design smarter, not harder.",
-                  "Your vision, streamlined."
-                ]}
-                interval={3000}
-                initialDelay={1500}
-                className="hero-rotating-text"
-              />
             </div>
 
             {/* Image grid area - content to be added later */}
