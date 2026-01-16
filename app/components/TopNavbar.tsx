@@ -6,7 +6,7 @@ import Logo from './Logo';
 
 export default function TopNavbar() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const [isOnHeroSection, setIsOnHeroSection] = useState(true);
   const [isStaticMode, setIsStaticMode] = useState(false);
 
   // Check if we're in static mode (wrapped in .top-navbar-static)
@@ -19,46 +19,47 @@ export default function TopNavbar() {
     checkStaticMode();
   }, []);
 
-  // Track hero section visibility to only show navbar on first section
+  // Track scroll position to determine if we're on the hero section
   useEffect(() => {
     // Skip hero visibility check if in static mode
     if (isStaticMode) {
-      setIsHeroVisible(true);
+      setIsOnHeroSection(true);
       setIsVisible(true); // Always visible in static mode
       return;
     }
 
-    const heroElement = document.getElementById('hero');
+    const handleScroll = () => {
+      const scrollContainer = document.querySelector('.scroll-container');
+      if (!scrollContainer) return;
 
-    // Guard: If hero doesn't exist, assume we're not on hero (hide navbar)
-    if (!heroElement) {
-      setIsHeroVisible(false);
+      const scrollTop = scrollContainer.scrollTop;
+      const viewportHeight = window.innerHeight;
+
+      // We're on the hero section if we're within the first viewport height
+      // Adding a small buffer (10% of viewport) to keep navbar available slightly past hero
+      setIsOnHeroSection(scrollTop < viewportHeight * 1.1);
+    };
+
+    const scrollContainer = document.querySelector('.scroll-container');
+    if (!scrollContainer) {
+      setIsOnHeroSection(false);
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          // Hero is visible when intersecting with viewport
-          setIsHeroVisible(entry.isIntersecting);
-        });
-      },
-      {
-        threshold: 0.5,  // Trigger when 50% of hero is visible
-        rootMargin: '0px'
-      }
-    );
+    // Initial check
+    handleScroll();
 
-    observer.observe(heroElement);
+    // Listen to scroll events
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
 
     // Cleanup on unmount
     return () => {
-      observer.disconnect();
+      scrollContainer.removeEventListener('scroll', handleScroll);
     };
   }, [isStaticMode]);
 
   // Don't render navbar if we're not on the hero section and not in static mode
-  if (!isHeroVisible && !isStaticMode) {
+  if (!isOnHeroSection && !isStaticMode) {
     return null;
   }
 
