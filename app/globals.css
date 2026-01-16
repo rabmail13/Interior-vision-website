@@ -709,7 +709,7 @@ body {
 .hero-container {
   width: 100%;
   margin: 0;
-  padding: 1.5rem 3rem;
+  padding: 0.75rem 1.5rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -776,7 +776,7 @@ body {
 .hero-titles-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   width: fit-content;
   gap: 0;
@@ -791,10 +791,11 @@ body {
 }
 
 .hero-title-word {
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Interior row with arrow + button */
@@ -824,8 +825,8 @@ body {
 
 /* Hero glasses icon - above Interior */
 .hero-glasses-icon {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 28rem;
+  height: auto;
   display: block;
   margin-bottom: 0.5rem;
   align-self: center;
@@ -945,7 +946,7 @@ body {
 .tagline-container {
   width: 100%;
   margin: 0;
-  padding: 4rem 2rem;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -956,11 +957,11 @@ body {
 
 .tagline-text {
   font-family: var(--font-inter), sans-serif;
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: clamp(1rem, 2vw, 2rem);
   font-weight: 300;
   line-height: 1.3;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
   margin: 0;
   flex-shrink: 0;

@@ -61,24 +61,15 @@ export default function Home() {
               <div className="hero-title-block">
               {/* Title elements wrapper */}
               <div className="hero-titles-wrapper">
+                {/* Hero image above titles */}
+                <img 
+                  src="/InteriorVision main website (13).png"
+                  alt="Interior Vision"
+                  className="hero-glasses-icon"
+                />
+                
                 {/* Interior and Vision row */}
                 <div className="hero-title-word">
-                  <svg 
-                    className="hero-glasses-icon" 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="1.5" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="6" cy="15" r="4"/>
-                    <circle cx="18" cy="15" r="4"/>
-                    <path d="M14 15a2 2 0 0 0-4 0"/>
-                    <path d="M2.5 13 5 7c.7-1.3 1.4-2 3-2"/>
-                    <path d="M21.5 13 19 7c-.7-1.3-1.4-2-3-2"/>
-                  </svg>
                   <h1 className="hero-title no-italic hero-title-rotate-in">Interior</h1>
                   <h1 className="hero-title">
                     <TypingText>Vision</TypingText>
@@ -94,22 +85,12 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Scroll indicator */}
-          <ScrollIndicator />
-        </ScrollSection>
-
-        {/* Section 2: Tagline */}
-        <ScrollSection
-          id="tagline"
-          className="section-2"
-          contentAlignment="center"
-          backgroundColor="#000000"
-        >
+          {/* Tagline */}
           <div className="tagline-container">
             <div className="tagline-line">
               <h2 className="tagline-text">
                 <TypingText typingSpeed={20} startDelay={150}>
-                  From inspiration to implementation,
+                  From <em>inspiration</em> to <em>implementation</em>,
                 </TypingText>
               </h2>
             </div>
@@ -125,6 +106,9 @@ export default function Home() {
               </h2>
             </div>
           </div>
+
+          {/* Scroll indicator */}
+          <ScrollIndicator />
         </ScrollSection>
 
         {/* Section 3: Key Features */}
