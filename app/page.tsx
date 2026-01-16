@@ -111,30 +111,30 @@ export default function Home() {
           <ScrollIndicator />
         </ScrollSection>
 
-        {/* Section 3: Key Features */}
+        {/* Section 2: Key Features */}
         <ScrollSection
           id="features"
-          className="section-3"
+          className="section-2"
           contentAlignment="center"
           backgroundColor="#f5f5f0"
         >
           <FeaturesSection />
         </ScrollSection>
 
-        {/* Section 4: Manage Projects */}
+        {/* Section 3: Built by Designers */}
         <ScrollSection
-          id="manage-projects"
-          className="section-4"
+          id="built-by-designers"
+          className="section-3"
           contentAlignment="center"
           backgroundColor="#000000"
         >
-          <ManageProjectsSection />
+          <BuiltByDesigners />
         </ScrollSection>
 
-        {/* Section 5: Video Section */}
+        {/* Section 4: Video Section */}
         <ScrollSection
           id="mood-boards"
-          className="section-5"
+          className="section-4"
           contentAlignment="center"
           backgroundColor="#e5e5e5"
         >
@@ -149,20 +149,20 @@ export default function Home() {
           </video>
         </ScrollSection>
 
-        {/* Section 6: Built by Designers */}
+        {/* Section 5: Manage Projects */}
         <ScrollSection
-          id="built-by-designers"
-          className="section-6"
+          id="manage-projects"
+          className="section-5"
           contentAlignment="center"
           backgroundColor="#000000"
         >
-          <BuiltByDesigners />
+          <ManageProjectsSection />
         </ScrollSection>
 
-        {/* Section 8: Learn More */}
+        {/* Section 6: Learn More */}
         <ScrollSection
           id="learn-more"
-          className="section-8"
+          className="section-6"
           contentAlignment="center"
           backgroundColor="#f5f5f0"
         >

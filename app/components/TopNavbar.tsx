@@ -5,17 +5,28 @@ import Link from 'next/link';
 import Logo from './Logo';
 
 export default function TopNavbar() {
-  const [isVisible, setIsVisible] = useState(true); // Always visible by default
-  const [isStaticMode, setIsStaticMode] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
-  // Check if we're in static mode (wrapped in .top-navbar-static)
+  // Track visibility based on section 1 (hero) visibility
   useEffect(() => {
-    const checkStaticMode = () => {
-      const staticWrapper = document.querySelector('.top-navbar-static');
-      setIsStaticMode(!!staticWrapper);
-    };
+    const heroSection = document.getElementById('hero');
+    if (!heroSection) return;
 
-    checkStaticMode();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Show navbar ONLY when hero section is visible
+          setIsVisible(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.05 } // Trigger when 5% of section is visible
+    );
+
+    observer.observe(heroSection);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const navLinks = [
@@ -28,9 +39,9 @@ export default function TopNavbar() {
 
   return (
     <>
-      {/* Navigation Bar - Always visible and sticky */}
+      {/* Navigation Bar - Visible only on section 1 */}
       <nav
-        className="top-navbar top-navbar-visible"
+        className={`top-navbar ${isVisible ? 'top-navbar-visible' : ''}`}
         aria-label="Main navigation"
       >
           <div className="top-navbar-content">

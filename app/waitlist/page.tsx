@@ -4,6 +4,7 @@ import { useState } from 'react';
 import AnimatedEntrance from '../components/AnimatedEntrance';
 import TypingText from '../components/TypingText';
 import ColourfulText from '../components/ColourfulText';
+import TopNavbar from '../components/TopNavbar';
 import Footer from '../components/Footer';
 
 export default function WaitlistPage() {
@@ -43,13 +44,16 @@ export default function WaitlistPage() {
 
   return (
     <main className="scroll-container">
-      <section id="waitlist" className="section-2" style={{ backgroundColor: '#000000', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="top-navbar-static">
+        <TopNavbar />
+      </div>
+      <section id="waitlist" className="section-2" style={{ backgroundColor: '#000000', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '120px' }}>
         <div className="tagline-container" style={{ maxWidth: '800px', padding: '2rem' }}>
           <AnimatedEntrance animation="fade" duration={0.8}>
             <div className="tagline-line">
               <h2 className="tagline-text">
                 <TypingText typingSpeed={20} startDelay={150}>
-                  Join the <ColourfulText text="waitlist" /> today
+                  <span style={{ color: '#ffffff' }}>Join the </span><ColourfulText text="waitlist" /><span style={{ color: '#ffffff' }}> today</span>
                 </TypingText>
               </h2>
             </div>
