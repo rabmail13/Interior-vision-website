@@ -19,7 +19,7 @@ export default function BlogPage() {
             <h1 className="text-6xl md:text-7xl font-normal mb-4">
               Our <span className="italic font-serif">Blog</span>
             </h1>
-            <p className="text-lg text-gray-600">Insights, tips, and inspiration for interior designers</p>
+            
           </div>
 
           {/* Blog Posts Grid */}
@@ -32,8 +32,11 @@ export default function BlogPage() {
               ))}
             </StaggerContainer>
           ) : (
-            <div className="text-center py-20">
-              <p className="text-2xl text-gray-500">No blog posts yet. Check back soon!</p>
+            <div className="text-center py-32">
+              <h2 className="text-5xl md:text-6xl font-normal mb-4">
+                <span className="italic font-serif">Coming Soon</span>
+              </h2>
+              <p className="text-xl text-gray-600">We're working on bringing you valuable insights and inspiration.</p>
             </div>
           )}
         </div>

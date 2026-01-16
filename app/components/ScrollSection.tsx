@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, forwardRef } from 'react';
 
 interface ScrollSectionProps {
   id?: string;
@@ -20,7 +20,7 @@ interface ScrollSectionProps {
  * ScrollSection Component
  * A full-screen section with 3 layers: background, content, and foreground
  */
-export default function ScrollSection({
+const ScrollSection = forwardRef<HTMLElement, ScrollSectionProps>(function ScrollSection({
   id,
   className = '',
   children,
@@ -34,7 +34,7 @@ export default function ScrollSection({
   parallaxForegroundSpeed = -0.2,
   backgroundColor,
   backgroundImage,
-}: ScrollSectionProps) {
+}, ref) {
   const sectionClasses = `section ${className}`.trim();
   const contentClasses = `section-content align-${contentAlignment} ${
     contentLayout !== 'default' ? contentLayout : ''
@@ -51,7 +51,7 @@ export default function ScrollSection({
   };
 
   return (
-    <section id={id} className={sectionClasses}>
+    <section id={id} className={sectionClasses} ref={ref}>
       {/* Background Layer */}
       <div
         className="section-background"
@@ -83,7 +83,9 @@ export default function ScrollSection({
       )}
     </section>
   );
-}
+});
+
+export default ScrollSection;
 
 /**
  * Helper components for common section patterns

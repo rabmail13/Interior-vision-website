@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ScrollSection from './components/ScrollSection';
 import TypingText from './components/TypingText';
 import HighlightText from './components/HighlightText';
@@ -16,6 +16,8 @@ import TopNavbar from './components/TopNavbar';
 
 export default function Home() {
   const section5VideoRef = useRef<HTMLVideoElement>(null);
+  const heroSectionRef = useRef<HTMLDivElement>(null);
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
 
   useEffect(() => {
     const videoElement = section5VideoRef.current;
@@ -43,6 +45,26 @@ export default function Home() {
       observer.disconnect();
     };
   }, []);
+
+  useEffect(() => {
+    const heroElement = heroSectionRef.current;
+    if (!heroElement) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsHeroVisible(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.1 } // Show navbar when at least 10% of hero is visible
+    );
+
+    observer.observe(heroElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
   return (
     <>
       <JumpToTop />
@@ -54,8 +76,9 @@ export default function Home() {
           className="section-1"
           contentAlignment="center"
           backgroundColor="#f5f5f0"
+          ref={heroSectionRef}
         >
-          <TopNavbar />
+          <TopNavbar isVisible={isHeroVisible} />
           <div className="hero-container">
             {/* Header Row */}
             <div className="hero-header">
@@ -91,7 +114,7 @@ export default function Home() {
           <div className="tagline-container">
             <div className="tagline-line">
               <h2 className="tagline-text">
-                <TypingText typingSpeed={20} startDelay={150}>
+                <TypingText typingSpeed={20} startDelay={1000}>
                   From <em>inspiration</em> to <em>implementation</em>,
                 </TypingText>
               </h2>
@@ -100,7 +123,7 @@ export default function Home() {
               <h2 className="tagline-text tagline-underline">
                 <HighlightText 
                   text="all in one place." 
-                  delay={1500}
+                  delay={2710}
                   duration={480}
                   highlightColor="#d4ff00"
                   textColor="#000000"
