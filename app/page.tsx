@@ -13,6 +13,7 @@ import AnimatedEntrance, { StaggerContainer, StaggerItem } from './components/An
 import ScrollIndicator from './components/ScrollIndicator';
 import JumpToTop from './components/JumpToTop';
 import JumpToBottom from './components/JumpToBottom';
+import Footer from './components/Footer';
 
 export default function Home() {
   const section5VideoRef = useRef<HTMLVideoElement>(null);
@@ -225,7 +226,7 @@ export default function Home() {
               <div className="about-content">
                 <h2 className="about-title">About Us</h2>
                 <p className="about-text">
-                  We&rsquo;re designers and engineer who have lived through the friction of disjointed and overpriced project management tools.
+                  Interior Vision was created by a designers and engineers who have lived through the friction of disjointed and overpriced project management tools.
                 </p>
                 <p className="about-text">
                   By combining design expertise with technical know-how, we created the tool we always wished existed: an intelligent sourcing platform that <span className="about-italic-underline">actually</span> understands what professional designers need.
@@ -307,6 +308,7 @@ export default function Home() {
             </StaggerContainer>
           </div>
         </ScrollSection>
+        <Footer />
       </main>
     </>
   );

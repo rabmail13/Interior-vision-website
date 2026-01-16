@@ -4,6 +4,7 @@ import { useState } from 'react';
 import AnimatedEntrance from '../components/AnimatedEntrance';
 import TypingText from '../components/TypingText';
 import ColourfulText from '../components/ColourfulText';
+import Footer from '../components/Footer';
 
 export default function WaitlistPage() {
   const [email, setEmail] = useState('');
@@ -103,6 +104,7 @@ export default function WaitlistPage() {
           </AnimatedEntrance>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

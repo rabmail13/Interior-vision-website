@@ -2,10 +2,15 @@
 
 import { StaggerContainer, StaggerItem } from '../components/AnimatedEntrance';
 import AnimatedEntrance from '../components/AnimatedEntrance';
+import TopNavbar from '../components/TopNavbar';
+import Footer from '../components/Footer';
 
 export default function ContactPage() {
   return (
     <main className="scroll-container">
+      <div className="top-navbar-static">
+        <TopNavbar />
+      </div>
       <section id="contact" className="section-8" style={{ backgroundColor: '#f5f5f0', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div className="learn-container">
           {/* Header */}
@@ -60,6 +65,7 @@ export default function ContactPage() {
           </StaggerContainer>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

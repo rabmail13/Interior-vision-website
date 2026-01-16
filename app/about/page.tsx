@@ -1,10 +1,15 @@
 'use client';
 
 import AnimatedEntrance from '../components/AnimatedEntrance';
+import TopNavbar from '../components/TopNavbar';
+import Footer from '../components/Footer';
 
 export default function AboutPage() {
   return (
     <main className="scroll-container">
+      <div className="top-navbar-static">
+        <TopNavbar />
+      </div>
       <section id="about" className="section-7" style={{ backgroundColor: '#1f1f1f', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div className="about-container">
           {/* Left content */}
@@ -12,7 +17,7 @@ export default function AboutPage() {
             <div className="about-content">
               <h2 className="about-title">About Us</h2>
               <p className="about-text">
-                We&rsquo;re designers and engineer who have lived through the friction of disjointed and overpriced project management tools.
+                Interior Vision was created by a designers and engineers who have lived through the friction of disjointed and overpriced project management tools.
               </p>
               <p className="about-text">
                 By combining design expertise with technical know-how, we created the tool we always wished existed: an intelligent sourcing platform that <span className="about-italic-underline">actually</span> understands what professional designers need.
@@ -33,6 +38,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

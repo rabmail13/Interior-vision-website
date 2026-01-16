@@ -2,13 +2,32 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Logo from './Logo';
 
 export default function TopNavbar() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const [isStaticMode, setIsStaticMode] = useState(false);
+
+  // Check if we're in static mode (wrapped in .top-navbar-static)
+  useEffect(() => {
+    const checkStaticMode = () => {
+      const staticWrapper = document.querySelector('.top-navbar-static');
+      setIsStaticMode(!!staticWrapper);
+    };
+
+    checkStaticMode();
+  }, []);
 
   // Track hero section visibility to only show navbar on first section
   useEffect(() => {
+    // Skip hero visibility check if in static mode
+    if (isStaticMode) {
+      setIsHeroVisible(true);
+      setIsVisible(true); // Always visible in static mode
+      return;
+    }
+
     const heroElement = document.getElementById('hero');
 
     // Guard: If hero doesn't exist, assume we're not on hero (hide navbar)
@@ -36,10 +55,10 @@ export default function TopNavbar() {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [isStaticMode]);
 
-  // Don't render navbar if we're not on the hero section
-  if (!isHeroVisible) {
+  // Don't render navbar if we're not on the hero section and not in static mode
+  if (!isHeroVisible && !isStaticMode) {
     return null;
   }
 
@@ -53,35 +72,27 @@ export default function TopNavbar() {
 
   return (
     <>
-      {/* Trigger Zone - Invisible hover area at top of page */}
-      <div
-        className="top-navbar-trigger"
-        onMouseEnter={() => setIsVisible(true)}
-        onMouseLeave={() => setIsVisible(false)}
-        aria-label="Navigation trigger"
+      {/* Trigger Zone - Invisible hover area at top of page (only in hero mode) */}
+      {!isStaticMode && (
+        <div
+          className="top-navbar-trigger"
+          onMouseEnter={() => setIsVisible(true)}
+          onMouseLeave={() => setIsVisible(false)}
+          aria-label="Navigation trigger"
+        />
+      )}
+
+      {/* Navigation Bar */}
+      <nav
+        className={`top-navbar ${isVisible || isStaticMode ? 'top-navbar-visible' : ''}`}
+        aria-label="Main navigation"
+        onMouseEnter={() => !isStaticMode && setIsVisible(true)}
+        onMouseLeave={() => !isStaticMode && setIsVisible(false)}
       >
-        {/* Navigation Bar */}
-        <nav
-          className={`top-navbar ${isVisible ? 'top-navbar-visible' : ''}`}
-          aria-label="Main navigation"
-        >
           <div className="top-navbar-content">
             {/* Logo/Brand */}
             <div className="top-navbar-logo">
-              <div className="hero-logo-box">
-                <svg
-                  className="hero-logo-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <circle cx="6" cy="15" r="4"/>
-                  <circle cx="18" cy="15" r="4"/>
-                  <path d="M14 15a2 2 0 0 0-4 0"/>
-                </svg>
-              </div>
+              <Logo />
               <span className="top-navbar-brand">Interior Vision</span>
             </div>
 
@@ -99,7 +110,6 @@ export default function TopNavbar() {
             </div>
           </div>
         </nav>
-      </div>
     </>
   );
 }
