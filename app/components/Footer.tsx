@@ -16,12 +16,17 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <div className="footer-logo">
-          <Logo />
-          <span className="footer-brand-text">Interior Vision</span>
+        <div className="footer-left">
+          <div className="footer-logo">
+            <Logo />
+            <span className="footer-brand-text">Interior Vision</span>
+          </div>
+          <p className="footer-copyright">
+            &copy; {currentYear} Interior Vision
+          </p>
         </div>
         
-        <nav className="footer-links">
+        <nav className="footer-center">
           {navigationLinks.map((link, index) => (
             <Link key={index} href={link.href} className="footer-link">
               {link.label}
@@ -29,13 +34,11 @@ export default function Footer() {
           ))}
         </nav>
 
-        <Link href="/waitlist" className="footer-cta-button">
-          Join Waitlist
-        </Link>
-
-        <p className="footer-copyright">
-          &copy; {currentYear} Interior Vision
-        </p>
+        <div className="footer-right">
+          <Link href="/waitlist" className="footer-cta-button">
+            Join Waitlist
+          </Link>
+        </div>
       </div>
     </footer>
   );
