@@ -213,41 +213,6 @@ export default function Home() {
           <BuiltByDesigners />
         </ScrollSection>
 
-        {/* Section 7: About Us */}
-        <ScrollSection
-          id="about-us"
-          className="section-7"
-          contentAlignment="center"
-          backgroundColor="#1f1f1f"
-        >
-          <div className="about-container">
-            {/* Left content */}
-            <AnimatedEntrance animation="fade" duration={0.8} threshold={0.3}>
-              <div className="about-content">
-                <h2 className="about-title">About Us</h2>
-                <p className="about-text">
-                  Interior Vision was created by a designers and engineers who have lived through the friction of disjointed and overpriced project management tools.
-                </p>
-                <p className="about-text">
-                  By combining design expertise with technical know-how, we created the tool we always wished existed: an intelligent sourcing platform that <span className="about-italic-underline">actually</span> understands what professional designers need.
-                </p>
-                <p className="about-text">
-                  Our mission is simple: give designers back their time so they can focus on what they do best—creating beautiful spaces.
-                </p>
-              </div>
-            </AnimatedEntrance>
-
-            {/* Right illustration */}
-            <div className="about-illustration">
-              <img 
-                src="/InteriorVision main website (11).png" 
-                alt="Designer searching illustration" 
-                className="about-image"
-              />
-            </div>
-          </div>
-        </ScrollSection>
-
         {/* Section 8: Learn More */}
         <ScrollSection
           id="learn-more"
@@ -262,7 +227,7 @@ export default function Home() {
                 <h2 className="learn-title">
                   Learn <span className="learn-title-italic">More</span>
                 </h2>
-                <p className="learn-subtitle">We&rsquo;re looking forward to hearing your feedback</p>
+                <p className="learn-subtitle">We look forward to hearing from you</p>
               </div>
             </AnimatedEntrance>
 
@@ -273,10 +238,10 @@ export default function Home() {
               <div className="learn-circle learn-circle-3"></div>
             </div>
 
-            {/* Button grid - 2 rows x 3 columns */}
+            {/* Button grid - 1 row x 3 columns */}
             <StaggerContainer className="learn-grid" staggerDelay={0.1}>
               <StaggerItem animation="scale">
-                <a href="#" className="learn-button">
+                <a href="/blog" className="learn-button">
                   Share Feedback <span className="learn-arrow">→</span>
                 </a>
               </StaggerItem>
@@ -286,23 +251,8 @@ export default function Home() {
                 </a>
               </StaggerItem>
               <StaggerItem animation="scale">
-                <a href="#" className="learn-button">
+                <a href="/waitlist" className="learn-button">
                   FAQ <span className="learn-arrow">→</span>
-                </a>
-              </StaggerItem>
-              <StaggerItem animation="scale">
-                <a href="#" className="learn-button">
-                  Pricing <span className="learn-arrow">→</span>
-                </a>
-              </StaggerItem>
-              <StaggerItem animation="scale">
-                <a href="#" className="learn-button">
-                  Blog <span className="learn-arrow">→</span>
-                </a>
-              </StaggerItem>
-              <StaggerItem animation="scale">
-                <a href="#" className="learn-button">
-                  Roadmap <span className="learn-arrow">→</span>
                 </a>
               </StaggerItem>
             </StaggerContainer>
