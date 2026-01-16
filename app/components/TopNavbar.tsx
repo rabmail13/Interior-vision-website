@@ -22,6 +22,7 @@ export default function TopNavbar() {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Blog', href: '/blog' },
+    { label: 'Email Us', href: 'mailto:contact@interiorvision.com' },
     { label: 'Join Waitlist', href: '/waitlist', highlight: true }
   ];
 

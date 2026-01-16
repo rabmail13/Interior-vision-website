@@ -793,7 +793,7 @@ body {
 .hero-title-word {
   text-align: left;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
 }
 
