@@ -3,7 +3,6 @@
 import { useEffect, useRef } from 'react';
 import ScrollSection from './components/ScrollSection';
 import RotatingText from './components/RotatingText';
-import ColourfulText from './components/ColourfulText';
 import TypingText from './components/TypingText';
 import HighlightText from './components/HighlightText';
 import FeaturesSection from './components/FeaturesSection';
@@ -147,7 +146,7 @@ export default function Home() {
             <div className="tagline-line">
               <h2 className="tagline-text">
                 <TypingText typingSpeed={20} startDelay={150}>
-                  From <ColourfulText text="inspiration" /> to <ColourfulText text="implementation" />,
+                  From inspiration to implementation,
                 </TypingText>
               </h2>
             </div>
@@ -190,7 +189,7 @@ export default function Home() {
           id="mood-boards"
           className="section-5"
           contentAlignment="center"
-          backgroundColor="#ffffff"
+          backgroundColor="#e5e5e5"
         >
           <video
             ref={section5VideoRef}
@@ -208,7 +207,7 @@ export default function Home() {
           id="built-by-designers"
           className="section-6"
           contentAlignment="center"
-          backgroundColor="#f5f5f0"
+          backgroundColor="#000000"
         >
           <BuiltByDesigners />
         </ScrollSection>
@@ -241,18 +240,18 @@ export default function Home() {
             {/* Button grid - 1 row x 3 columns */}
             <StaggerContainer className="learn-grid" staggerDelay={0.1}>
               <StaggerItem animation="scale">
+                <a href="/about" className="learn-button">
+                  About <span className="learn-arrow">→</span>
+                </a>
+              </StaggerItem>
+              <StaggerItem animation="scale">
                 <a href="/blog" className="learn-button">
-                  Share Feedback <span className="learn-arrow">→</span>
+                  Blog <span className="learn-arrow">→</span>
                 </a>
               </StaggerItem>
               <StaggerItem animation="scale">
-                <a href="#" className="learn-button">
-                  Email Us <span className="learn-arrow">→</span>
-                </a>
-              </StaggerItem>
-              <StaggerItem animation="scale">
-                <a href="/waitlist" className="learn-button">
-                  FAQ <span className="learn-arrow">→</span>
+                <a href="/blog" className="learn-button">
+                  blog <span className="learn-arrow">→</span>
                 </a>
               </StaggerItem>
             </StaggerContainer>
