@@ -38,7 +38,7 @@ export default function ManageProjectsSection() {
   return (
     <div ref={containerRef} className="manage-projects-container">
       <h2 className="manage-projects-heading manage-projects-heading-animated">
-        Manage all of your projects in <span className="manage-projects-italic">one place</span>
+        Manage your projects <span className="manage-projects-italic">anywhere</span>
       </h2>
       <div className="manage-projects-image-wrapper manage-projects-image-animated">
         <img

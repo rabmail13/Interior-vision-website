@@ -10,7 +10,7 @@ export default function Footer() {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Email Us', href: 'mailto:info@interiorvision.com' },
+    { label: 'Email Us', href: 'mailto:rachel@rhizomiclabs.ai' },
   ];
 
   return (

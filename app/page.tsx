@@ -250,8 +250,8 @@ export default function Home() {
                 </a>
               </StaggerItem>
               <StaggerItem animation="scale">
-                <a href="/blog" className="learn-button">
-                  blog <span className="learn-arrow">→</span>
+                <a href="mailto:rachel@rhizomiclabs.ai" className="learn-button">
+                  Email Us
                 </a>
               </StaggerItem>
             </StaggerContainer>

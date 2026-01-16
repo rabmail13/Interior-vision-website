@@ -10,11 +10,35 @@ export default function WaitlistPage() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Add actual form submission logic
-    setSubmitted(true);
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to join waitlist');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -39,6 +63,7 @@ export default function WaitlistPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
+                    disabled={loading}
                     style={{
                       width: '100%',
                       padding: '1rem',
@@ -47,7 +72,8 @@ export default function WaitlistPage() {
                       border: '1px solid rgba(255, 255, 255, 0.3)',
                       borderRadius: '8px',
                       color: '#ffffff',
-                      outline: 'none'
+                      outline: 'none',
+                      opacity: loading ? 0.6 : 1
                     }}
                   />
                 </div>
@@ -58,6 +84,7 @@ export default function WaitlistPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    disabled={loading}
                     style={{
                       width: '100%',
                       padding: '1rem',
@@ -66,32 +93,47 @@ export default function WaitlistPage() {
                       border: '1px solid rgba(255, 255, 255, 0.3)',
                       borderRadius: '8px',
                       color: '#ffffff',
-                      outline: 'none'
+                      outline: 'none',
+                      opacity: loading ? 0.6 : 1
                     }}
                   />
                 </div>
+                {error && (
+                  <div style={{
+                    marginBottom: '1.5rem',
+                    padding: '1rem',
+                    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+                    border: '1px solid rgba(255, 0, 0, 0.3)',
+                    borderRadius: '8px',
+                    color: '#ff6b6b'
+                  }}>
+                    {error}
+                  </div>
+                )}
                 <button
                   type="submit"
+                  disabled={loading}
                   style={{
                     width: '100%',
                     padding: '1rem 2rem',
                     fontSize: '1.1rem',
-                    backgroundColor: '#d4ff00',
+                    backgroundColor: loading ? '#999999' : '#d4ff00',
                     color: '#000000',
                     border: 'none',
                     borderRadius: '8px',
-                    cursor: 'pointer',
+                    cursor: loading ? 'not-allowed' : 'pointer',
                     fontWeight: '600',
-                    transition: 'transform 0.2s ease'
+                    transition: 'transform 0.2s ease',
+                    opacity: loading ? 0.6 : 1
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.02)';
+                    if (!loading) e.currentTarget.style.transform = 'scale(1.02)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
+                    if (!loading) e.currentTarget.style.transform = 'scale(1)';
                   }}
                 >
-                  Join Waitlist
+                  {loading ? 'Joining...' : 'Join Waitlist'}
                 </button>
               </form>
             ) : (
