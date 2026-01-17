@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   description: "Creating bespoke interiors and architectural spaces that tell your story",
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
