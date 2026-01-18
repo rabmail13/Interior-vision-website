@@ -47,51 +47,44 @@ export default function FeaturesSection() {
 
       <div className="features-grid">
         {/* Feature 01 */}
-        <div 
-          className="feature-card feature-card-animated" 
+        <div
+          className="feature-card feature-card-animated"
           style={{ '--card-index': 1 } as React.CSSProperties}
         >
           <div className="feature-number"><FolderPen /></div>
           <h3 className="feature-title">
-            Full-Suite<br />Project Management
+            Full-Suite Project Management
           </h3>
           <p className="feature-description">
-            Communicate with Clients<br />
-            Manage products, projects, &<br />
-            Clients in one interface
+            Communicate with Clients. Manage products, projects, & Clients in one interface
           </p>
         </div>
 
         {/* Feature 02 */}
-        <div 
-          className="feature-card feature-card-animated" 
+        <div
+          className="feature-card feature-card-animated"
           style={{ '--card-index': 2 } as React.CSSProperties}
         >
           <div className="feature-number"><FolderPen /></div>
           <h3 className="feature-title">
-            Intelligent<br />Inventory<br />Management
+            Intelligent Inventory Management
           </h3>
           <p className="feature-description">
-            One-click save → <br />
-            organized procurement<br />
-            collections via our Browser<br />
-            Extension
+            One-click save → organized procurement collections via our Browser Extension
           </p>
         </div>
 
         {/* Feature 03 */}
-        <div 
-          className="feature-card feature-card-animated" 
+        <div
+          className="feature-card feature-card-animated"
           style={{ '--card-index': 3 } as React.CSSProperties}
         >
           <div className="feature-number"><Brain /></div>
           <h3 className="feature-title">
-            Automated<br />workflows to<br />save you time
+            Automated workflows to save you time
           </h3>
           <p className="feature-description">
-            Upload → AI Match<br />
-            Auto-generated spec sheets<br />
-            & deliverables
+            Upload → AI Match. Auto-generated spec sheets & deliverables
           </p>
         </div>
       </div>

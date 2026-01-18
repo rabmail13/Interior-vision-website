@@ -83,7 +83,6 @@ export default function BuiltByDesigners() {
             position: 'absolute',
             left: 0,
             top: 0,
-            whiteSpace: 'nowrap',
             clipPath: `inset(0 ${100 - revealPercent}% 0 0)`,
           }}
         >
