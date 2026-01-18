@@ -7,8 +7,8 @@ const postsDirectory = path.join(process.cwd(), 'content/blog');
 export interface BlogPost {
   slug: string;
   title: string;
-  date: string;
-  author: string;
+  date?: string;
+  author?: string;
   description: string;
   coverImage?: string;
   content: string;
@@ -17,8 +17,8 @@ export interface BlogPost {
 export interface BlogPostMetadata {
   slug: string;
   title: string;
-  date: string;
-  author: string;
+  date?: string;
+  author?: string;
   description: string;
   coverImage?: string;
 }
@@ -56,7 +56,10 @@ export function getAllPosts(): BlogPostMetadata[] {
       };
     })
     .sort((a, b) => {
-      // Sort by date, newest first
+      // Sort by date, newest first (posts without dates go to the end)
+      if (!a.date && !b.date) return 0;
+      if (!a.date) return 1;
+      if (!b.date) return -1;
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
 
@@ -81,8 +84,8 @@ export function getPostBySlug(slug: string): BlogPost {
   return {
     slug: realSlug,
     title: data.title || 'Untitled',
-    date: data.date || new Date().toISOString(),
-    author: data.author || 'Anonymous',
+    date: data.date,
+    author: data.author,
     description: data.description || '',
     coverImage: data.coverImage,
     content,

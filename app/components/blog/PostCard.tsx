@@ -13,11 +13,13 @@ export default function PostCard({ post }: PostCardProps) {
       className="group block py-8 border-b border-gray-200 hover:border-gray-400 transition-colors"
     >
       {/* Date & Author */}
-      <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-        <time dateTime={post.date}>{formatDate(post.date)}</time>
-        <span>·</span>
-        <span>{post.author}</span>
-      </div>
+      {(post.date || post.author) && (
+        <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+          {post.date && <time dateTime={post.date}>{formatDate(post.date)}</time>}
+          {post.date && post.author && <span>·</span>}
+          {post.author && <span>{post.author}</span>}
+        </div>
+      )}
 
       {/* Title */}
       <h2 className="text-3xl font-semibold text-black mb-3 group-hover:underline">
