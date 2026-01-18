@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { FolderPen, Brain } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { FolderPen, Brain, ChevronDown } from 'lucide-react';
 
 export default function FeaturesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [expandedFeature, setExpandedFeature] = useState<number | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -39,54 +40,74 @@ export default function FeaturesSection() {
     return () => observer.disconnect();
   }, []);
 
+  const toggleFeature = (index: number) => {
+    setExpandedFeature(expandedFeature === index ? null : index);
+  };
+
+  const features = [
+    {
+      icon: <FolderPen />,
+      title: 'Full-Suite Project Management',
+      description: 'Communicate with Clients. Manage products, projects, & Clients in one interface'
+    },
+    {
+      icon: <FolderPen />,
+      title: 'Intelligent Inventory Management',
+      description: 'One-click save → organized procurement collections via our Browser Extension'
+    },
+    {
+      icon: <Brain />,
+      title: 'Automated workflows to save you time',
+      description: 'Upload → AI Match. Auto-generated spec sheets & deliverables'
+    }
+  ];
+
   return (
     <div ref={containerRef} className="features-container">
       <h2 className="features-heading features-heading-animated">
         Key <span className="features-italic">Features</span>
       </h2>
 
-      <div className="features-grid">
-        {/* Feature 01 */}
-        <div
-          className="feature-card feature-card-animated"
-          style={{ '--card-index': 1 } as React.CSSProperties}
-        >
-          <div className="feature-number"><FolderPen /></div>
-          <h3 className="feature-title">
-            Full-Suite Project Management
-          </h3>
-          <p className="feature-description">
-            Communicate with Clients. Manage products, projects, & Clients in one interface
-          </p>
-        </div>
+      {/* Desktop grid layout */}
+      <div className="features-grid features-grid-desktop">
+        {features.map((feature, index) => (
+          <div
+            key={index}
+            className="feature-card feature-card-animated"
+            style={{ '--card-index': index + 1 } as React.CSSProperties}
+          >
+            <div className="feature-number">{feature.icon}</div>
+            <h3 className="feature-title">{feature.title}</h3>
+            <p className="feature-description">{feature.description}</p>
+          </div>
+        ))}
+      </div>
 
-        {/* Feature 02 */}
-        <div
-          className="feature-card feature-card-animated"
-          style={{ '--card-index': 2 } as React.CSSProperties}
-        >
-          <div className="feature-number"><FolderPen /></div>
-          <h3 className="feature-title">
-            Intelligent Inventory Management
-          </h3>
-          <p className="feature-description">
-            One-click save → organized procurement collections via our Browser Extension
-          </p>
-        </div>
-
-        {/* Feature 03 */}
-        <div
-          className="feature-card feature-card-animated"
-          style={{ '--card-index': 3 } as React.CSSProperties}
-        >
-          <div className="feature-number"><Brain /></div>
-          <h3 className="feature-title">
-            Automated workflows to save you time
-          </h3>
-          <p className="feature-description">
-            Upload → AI Match. Auto-generated spec sheets & deliverables
-          </p>
-        </div>
+      {/* Mobile accordion layout */}
+      <div className="features-accordion features-accordion-mobile">
+        {features.map((feature, index) => (
+          <div
+            key={index}
+            className={`feature-accordion-item ${expandedFeature === index ? 'expanded' : ''}`}
+          >
+            <button
+              className="feature-accordion-header"
+              onClick={() => toggleFeature(index)}
+              aria-expanded={expandedFeature === index}
+            >
+              <div className="feature-accordion-header-content">
+                <div className="feature-number-small">{feature.icon}</div>
+                <h3 className="feature-title-small">{feature.title}</h3>
+              </div>
+              <ChevronDown
+                className={`feature-accordion-chevron ${expandedFeature === index ? 'rotated' : ''}`}
+              />
+            </button>
+            <div className={`feature-accordion-content ${expandedFeature === index ? 'open' : ''}`}>
+              <p className="feature-description">{feature.description}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
