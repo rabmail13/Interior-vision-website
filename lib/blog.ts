@@ -8,7 +8,6 @@ export interface BlogPost {
   slug: string;
   title: string;
   date?: string;
-  author?: string;
   description: string;
   coverImage?: string;
   content: string;
@@ -18,7 +17,6 @@ export interface BlogPostMetadata {
   slug: string;
   title: string;
   date?: string;
-  author?: string;
   description: string;
   coverImage?: string;
 }
@@ -85,7 +83,6 @@ export function getPostBySlug(slug: string): BlogPost {
     slug: realSlug,
     title: data.title || 'Untitled',
     date: data.date,
-    author: data.author,
     description: data.description || '',
     coverImage: data.coverImage,
     content,

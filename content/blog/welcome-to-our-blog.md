@@ -1,7 +1,6 @@
 ---
 title: "Welcome to Our Blog"
 date: "2026-01-18"
-author: "Demo Team"
 description: "We're excited to share insights, updates, and stories with you through our new blog."
 coverImage: "/images/blog/welcome.jpg"
 ---

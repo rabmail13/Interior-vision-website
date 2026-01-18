@@ -3,11 +3,10 @@ import { formatDate } from '@/lib/blog';
 interface PostHeaderProps {
   title: string;
   date: string;
-  author: string;
   coverImage?: string;
 }
 
-export default function PostHeader({ title, date, author, coverImage }: PostHeaderProps) {
+export default function PostHeader({ title, date, coverImage }: PostHeaderProps) {
   return (
     <header className="mb-12">
       {/* Cover Image */}
@@ -31,8 +30,6 @@ export default function PostHeader({ title, date, author, coverImage }: PostHead
         <time dateTime={date} className="text-base">
           {formatDate(date)}
         </time>
-        <span>•</span>
-        <span className="text-base">By {author}</span>
       </div>
     </header>
   );

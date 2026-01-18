@@ -13,10 +13,10 @@ export default function BlogPage() {
         <TopNavbar />
       </div>
       <section id="blog" className="section-8" style={{ backgroundColor: '#ffffff', minHeight: '100vh', paddingTop: '80px', paddingBottom: '40px' }}>
-        <div className="max-w-[680px] mx-auto px-6">
+        <div className="max-w-[680px] mx-auto px-6 pt-12 md:pt-16">
           {/* Header */}
           <div className="mb-6">
-            <h1 className="text-3xl font-semibold mb-0">
+            <h1 className="text-2xl md:text-3xl font-semibold mb-0">
               Blog
             </h1>
           </div>

@@ -43,7 +43,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         <PostHeader
           title={post.title}
           date={post.date}
-          author={post.author}
           coverImage={post.coverImage}
         />
 

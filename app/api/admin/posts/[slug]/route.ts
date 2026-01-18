@@ -68,7 +68,7 @@ export async function PUT(
 
   try {
     const { slug } = await params;
-    const { title, date, author, description, coverImage, content, newSlug } = await request.json();
+    const { title, date, description, coverImage, content, newSlug } = await request.json();
 
     if (!title || !content) {
       return NextResponse.json(
@@ -95,7 +95,6 @@ export async function PUT(
     };
 
     if (date) frontmatter.date = date;
-    if (author) frontmatter.author = author;
     if (description) frontmatter.description = description;
     if (coverImage) frontmatter.coverImage = coverImage;
 

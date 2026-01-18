@@ -259,7 +259,6 @@ function AdminDashboard() {
                   )}
                   <div className="text-sm text-gray-500">
                     {post.date && <span>{post.date}</span>}
-                    {post.author && <span> • {post.author}</span>}
                   </div>
                 </div>
                 <div className="flex gap-2 ml-4">
@@ -290,7 +289,6 @@ function PostEditor({ slug, onClose, onSave }: { slug?: string; onClose: () => v
     slug: '',
     title: '',
     date: '',
-    author: '',
     description: '',
     coverImage: '',
     content: '',
@@ -315,7 +313,6 @@ function PostEditor({ slug, onClose, onSave }: { slug?: string; onClose: () => v
           slug: postSlug,
           title: data.post.title || '',
           date: data.post.date || '',
-          author: data.post.author || '',
           description: data.post.description || '',
           coverImage: data.post.coverImage || '',
           content: data.post.content || '',
@@ -342,7 +339,6 @@ function PostEditor({ slug, onClose, onSave }: { slug?: string; onClose: () => v
         ? {
             title: formData.title,
             date: formData.date,
-            author: formData.author,
             description: formData.description,
             coverImage: formData.coverImage,
             content: formData.content,
@@ -432,30 +428,16 @@ function PostEditor({ slug, onClose, onSave }: { slug?: string; onClose: () => v
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-black mb-2">
-                Date
-              </label>
-              <input
-                type="date"
-                value={formData.date}
-                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black text-black"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-black mb-2">
-                Author
-              </label>
-              <input
-                type="text"
-                value={formData.author}
-                onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black text-black"
-              />
-            </div>
+          <div>
+            <label className="block text-sm font-medium text-black mb-2">
+              Date
+            </label>
+            <input
+              type="date"
+              value={formData.date}
+              onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black text-black"
+            />
           </div>
 
           <div>
