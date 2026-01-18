@@ -12,31 +12,29 @@ export default function BlogPage() {
       <div className="top-navbar-static">
         <TopNavbar />
       </div>
-      <section id="blog" className="section-8" style={{ backgroundColor: '#f5f5f0', minHeight: '100vh', paddingTop: '120px', paddingBottom: '80px' }}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <section id="blog" className="section-8" style={{ backgroundColor: '#ffffff', minHeight: '100vh', paddingTop: '120px', paddingBottom: '80px' }}>
+        <div className="max-w-[680px] mx-auto px-6">
           {/* Header */}
-          <div className="mb-12 max-w-2xl">
-            <h1 className="text-6xl md:text-7xl font-normal mb-4">
-              Our <span className="italic font-serif">Blog</span>
+          <div className="mb-16">
+            <h1 className="text-5xl md:text-6xl font-semibold mb-2">
+              Blog
             </h1>
-            
+
           </div>
 
-          {/* Blog Posts Grid */}
+          {/* Blog Posts List */}
           {posts.length > 0 ? (
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8" staggerDelay={0.1}>
+            <div className="space-y-0">
               {posts.map((post) => (
-                <StaggerItem key={post.slug} animation="scale">
-                  <PostCard post={post} />
-                </StaggerItem>
+                <PostCard key={post.slug} post={post} />
               ))}
-            </StaggerContainer>
+            </div>
           ) : (
             <div className="text-center py-32">
-              <h2 className="text-5xl md:text-6xl font-normal mb-4">
-                <span className="italic font-serif">Coming Soon</span>
+              <h2 className="text-4xl font-normal mb-4 text-gray-800">
+                Coming Soon
               </h2>
-              <p className="text-xl text-gray-600">We're working on bringing you valuable insights and inspiration.</p>
+              <p className="text-lg text-gray-600">We're working on bringing you valuable insights and inspiration.</p>
             </div>
           )}
         </div>

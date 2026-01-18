@@ -1402,30 +1402,34 @@ body {
 @media (max-width: 768px) {
   .about-container {
     flex-direction: column;
-    padding: 2rem 1.5rem;
-    gap: 2rem;
-    text-align: center;
+    padding: 6rem 1.5rem 2rem 1.5rem;
+    gap: 2.5rem;
+    text-align: left;
   }
-  
+
   .about-content {
     flex: none;
     max-width: 100%;
+    gap: 1.5rem;
   }
-  
+
   .about-title {
     font-size: 2.5rem;
+    text-align: left;
+    margin-bottom: 1rem;
   }
-  
+
   .about-text {
     font-size: 1rem;
-    text-align: center;
+    text-align: left;
+    line-height: 1.7;
   }
-  
+
   .about-illustration {
     margin-left: 0;
     justify-content: center;
   }
-  
+
   .about-image {
     height: 300px;
     transform: translateX(0);
@@ -1434,19 +1438,26 @@ body {
 
 @media (max-width: 480px) {
   .about-container {
-    padding: 1.5rem 1rem;
+    padding: 3.5rem 0.875rem 1.25rem 0.875rem;
+    gap: 1.5rem;
   }
-  
+
+  .about-content {
+    gap: 0.875rem;
+  }
+
   .about-title {
-    font-size: 2rem;
+    font-size: 1.65rem;
+    margin-bottom: 0.5rem;
   }
-  
+
   .about-text {
-    font-size: 0.95rem;
+    font-size: 0.8125rem;
+    line-height: 1.55;
   }
-  
+
   .about-image {
-    height: 250px;
+    height: 200px;
   }
 }
 
