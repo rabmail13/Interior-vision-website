@@ -2,7 +2,7 @@ import { formatDate } from '@/lib/blog';
 
 interface PostHeaderProps {
   title: string;
-  date: string;
+  date?: string;
   coverImage?: string;
 }
 
@@ -26,11 +26,13 @@ export default function PostHeader({ title, date, coverImage }: PostHeaderProps)
       </h1>
 
       {/* Metadata */}
-      <div className="flex items-center gap-4 text-gray-600">
-        <time dateTime={date} className="text-base">
-          {formatDate(date)}
-        </time>
-      </div>
+      {date && (
+        <div className="flex items-center gap-4 text-gray-600">
+          <time dateTime={date} className="text-base">
+            {formatDate(date)}
+          </time>
+        </div>
+      )}
     </header>
   );
 }
