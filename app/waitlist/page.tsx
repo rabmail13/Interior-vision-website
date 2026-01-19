@@ -144,17 +144,16 @@ export default function WaitlistPage() {
             ) : (
               <div style={{ marginTop: '3rem', textAlign: 'center' }}>
                 <div style={{
-                  padding: '1.5rem',
+                  padding: '2rem',
                   backgroundColor: 'rgba(212, 255, 0, 0.1)',
                   border: '1px solid rgba(212, 255, 0, 0.3)',
-                  borderRadius: '8px',
-                  marginBottom: '1rem'
+                  borderRadius: '8px'
                 }}>
-                  <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>✓</div>
-                  <h2 style={{ fontSize: '1.5rem', color: '#ffffff', margin: 0 }}>
+                  <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>✓</div>
+                  <h2 style={{ fontSize: '1.5rem', color: '#ffffff', margin: '0 0 0.5rem 0' }}>
                     You&rsquo;re on the list!
                   </h2>
-                  <p style={{ fontSize: '1rem', color: 'rgba(255, 255, 255, 0.7)', marginTop: '0.5rem' }}>
+                  <p style={{ fontSize: '1rem', color: 'rgba(255, 255, 255, 0.7)', margin: 0 }}>
                     We&rsquo;ll be in touch soon.
                   </p>
                 </div>

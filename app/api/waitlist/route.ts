@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
 
       if (existingEntry.length > 0) {
         return NextResponse.json(
-          { error: 'This email is already on the waitlist' },
+          { error: 'You\'re already on the waitlist silly!' },
           { status: 409 }
         );
       }
