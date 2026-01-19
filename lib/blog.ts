@@ -48,7 +48,6 @@ export function getAllPosts(): BlogPostMetadata[] {
         slug: post.slug,
         title: post.title,
         date: post.date,
-        author: post.author,
         description: post.description,
         coverImage: post.coverImage,
       };
