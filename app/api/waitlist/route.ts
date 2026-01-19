@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
       // Handle duplicate email error (constraint violation)
       if (errorMessage.includes('unique') || errorMessage.includes('duplicate')) {
         return NextResponse.json(
-          { error: 'This email is already on the waitlist' },
+          { error: 'You\'re already on the waitlist silly!' },
           { status: 409 }
         );
       }
