@@ -4,7 +4,7 @@ The waitlist implementation is now complete with database persistence and email 
 
 ## What's Been Implemented
 
-- Database persistence with PostgreSQL (Vercel Postgres)
+- Database persistence with PostgreSQL (Neon Postgres via Vercel)
 - Email confirmation to users via Resend
 - Admin notification emails
 - Duplicate email prevention
@@ -14,12 +14,12 @@ The waitlist implementation is now complete with database persistence and email 
 
 ## Setup Steps
 
-### 1. Create Vercel Postgres Database
+### 1. Create Neon Postgres Database (via Vercel)
 
 1. Go to your [Vercel Dashboard](https://vercel.com/dashboard)
 2. Navigate to the **Storage** tab
 3. Click **Create Database**
-4. Select **Postgres**
+4. Select **Postgres** and choose **Neon** as the provider
 5. Choose a name (e.g., "interior-vision-db")
 6. Select a region (choose closest to your users)
 7. Click **Create**
@@ -33,42 +33,36 @@ After creating the database:
 3. Copy all the environment variables shown
 4. Paste them into your `.env.local` file (they're already prepared, just need values)
 
-The variables you need:
+The main variable you need:
 ```env
-POSTGRES_URL="postgres://default:xxxxx@xxxxx.postgres.vercel-storage.com:5432/verceldb"
-POSTGRES_PRISMA_URL="postgres://default:xxxxx@xxxxx.postgres.vercel-storage.com:5432/verceldb?pgbouncer=true&connect_timeout=15"
-POSTGRES_URL_NON_POOLING="postgres://default:xxxxx@xxxxx.postgres.vercel-storage.com:5432/verceldb"
-POSTGRES_USER="default"
-POSTGRES_HOST="xxxxx.postgres.vercel-storage.com"
-POSTGRES_PASSWORD="xxxxx"
-POSTGRES_DATABASE="verceldb"
+DATABASE_URL="postgresql://neondb_owner:xxxxx@xxxxx.neon.tech/neondb?sslmode=require"
+```
+
+You'll also get these additional variables (already configured in your .env.local):
+```env
+POSTGRES_URL="postgresql://neondb_owner:xxxxx@xxxxx.neon.tech/neondb?sslmode=require"
+POSTGRES_PRISMA_URL="postgresql://neondb_owner:xxxxx@xxxxx.neon.tech/neondb?connect_timeout=15&sslmode=require"
+# ... and others
 ```
 
 ### 3. Create the Database Table
 
-#### Option A: Using Vercel Dashboard (Recommended)
-
-1. In your Vercel Postgres dashboard, go to the **Query** tab
-2. Copy the contents of `scripts/create-waitlist-table.sql`
-3. Paste into the query editor
-4. Click **Run Query**
-
-#### Option B: Using Vercel CLI
+#### Option A: Using the Setup Script (Recommended)
 
 ```bash
-# Install Vercel CLI if you haven't
-npm i -g vercel
-
-# Login to Vercel
-vercel login
-
-# Link your project
-vercel link
-
-# Run the SQL script
-vercel env pull .env.development.local
-psql $POSTGRES_URL -f scripts/create-waitlist-table.sql
+# Run the setup script
+node scripts/setup-waitlist.js
 ```
+
+This will create the `waitlist` table with all necessary indexes.
+
+#### Option B: Using Neon Console
+
+1. Go to your [Neon Console](https://console.neon.tech/)
+2. Select your project
+3. Go to the **SQL Editor** tab
+4. Copy and paste the contents of `scripts/create-waitlist-table.sql`
+5. Click **Run**
 
 ### 4. Verify Resend Configuration
 
@@ -92,16 +86,12 @@ RESEND_API_KEY="re_FGPKb2uy_4dpgFsmQtKtXUh7wjsx2bHuR"
 
 1. Add the environment variables to your Vercel project:
    ```bash
-   vercel env add POSTGRES_URL
-   vercel env add POSTGRES_PRISMA_URL
-   vercel env add POSTGRES_URL_NON_POOLING
-   vercel env add POSTGRES_USER
-   vercel env add POSTGRES_HOST
-   vercel env add POSTGRES_PASSWORD
-   vercel env add POSTGRES_DATABASE
+   vercel env add DATABASE_URL
    vercel env add RESEND_API_KEY
    vercel env add ADMIN_EMAIL
    ```
+
+   Note: If you created the Neon database through Vercel, these variables are likely already configured automatically.
 
 2. Deploy:
    ```bash
@@ -129,10 +119,11 @@ RESEND_API_KEY="re_FGPKb2uy_4dpgFsmQtKtXUh7wjsx2bHuR"
 
 Check that entries are being saved:
 
-1. Go to your Vercel Postgres dashboard
-2. Go to the **Data** tab
-3. Click on the `waitlist` table
-4. You should see your test entries
+1. Go to your [Neon Console](https://console.neon.tech/)
+2. Select your project
+3. Go to the **Tables** tab
+4. Click on the `waitlist` table
+5. You should see your test entries
 
 ### Verify Emails
 
@@ -201,9 +192,9 @@ See `docs/waitlist-implementation-plan.md` for additional features you can add:
 ## Troubleshooting
 
 ### "Failed to save to database"
-- Check that POSTGRES_URL is set correctly in .env.local
-- Verify the table was created successfully
-- Check Vercel Postgres dashboard for connection issues
+- Check that DATABASE_URL is set correctly in .env.local
+- Verify the table was created successfully (run `node scripts/setup-waitlist.js`)
+- Check Neon Console for connection issues
 
 ### "Failed to send email"
 - Verify RESEND_API_KEY is correct
@@ -218,7 +209,7 @@ See `docs/waitlist-implementation-plan.md` for additional features you can add:
 ## Support
 
 For issues or questions:
-- Check the [Vercel Postgres docs](https://vercel.com/docs/storage/vercel-postgres)
+- Check the [Neon docs](https://neon.tech/docs/introduction)
 - Check the [Resend docs](https://resend.com/docs)
 - Review `docs/waitlist-implementation-plan.md` for detailed implementation notes
 

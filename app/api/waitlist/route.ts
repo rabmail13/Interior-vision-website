@@ -1,10 +1,12 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
-import { sql } from '@vercel/postgres';
+import { neon } from '@neondatabase/serverless';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
+  // Initialize Neon connection inside the handler
+  const sql = neon(process.env.DATABASE_URL!);
   try {
     const body = await request.json();
     const { name, email } = body;
@@ -38,7 +40,7 @@ export async function POST(request: NextRequest) {
         SELECT email FROM waitlist WHERE email = ${email.toLowerCase()}
       `;
 
-      if (existingEntry.rows.length > 0) {
+      if (existingEntry.length > 0) {
         return NextResponse.json(
           { error: 'This email is already on the waitlist' },
           { status: 409 }
