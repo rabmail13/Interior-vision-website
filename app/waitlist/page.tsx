@@ -49,13 +49,15 @@ export default function WaitlistPage() {
       <section id="waitlist" className="section-2" style={{ backgroundColor: '#000000', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '120px' }}>
         <div className="tagline-container" style={{ maxWidth: '800px', padding: '2rem' }}>
           <AnimatedEntrance animation="fade" duration={0.8}>
-            <div className="tagline-line">
-              <h2 className="tagline-text">
-                <TypingText typingSpeed={20} startDelay={150}>
-                  <span style={{ color: '#ffffff' }}>Join the </span><ColourfulText text="waitlist" /><span style={{ color: '#ffffff' }}> today</span>
-                </TypingText>
-              </h2>
-            </div>
+            {!submitted && (
+              <div className="tagline-line">
+                <h2 className="tagline-text">
+                  <TypingText typingSpeed={20} startDelay={150}>
+                    <span style={{ color: '#ffffff' }}>Join the </span><ColourfulText text="waitlist" /><span style={{ color: '#ffffff' }}> today</span>
+                  </TypingText>
+                </h2>
+              </div>
+            )}
 
             {!submitted ? (
               <form onSubmit={handleSubmit} style={{ marginTop: '3rem' }}>
@@ -140,10 +142,22 @@ export default function WaitlistPage() {
                 </button>
               </form>
             ) : (
-              <div className="tagline-line" style={{ marginTop: '3rem' }}>
-                <h2 className="tagline-text" style={{ fontSize: '1.5rem' }}>
-                  Thank you for joining! We&rsquo;ll be in touch soon.
-                </h2>
+              <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+                <div style={{
+                  padding: '1.5rem',
+                  backgroundColor: 'rgba(212, 255, 0, 0.1)',
+                  border: '1px solid rgba(212, 255, 0, 0.3)',
+                  borderRadius: '8px',
+                  marginBottom: '1rem'
+                }}>
+                  <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>✓</div>
+                  <h2 style={{ fontSize: '1.5rem', color: '#ffffff', margin: 0 }}>
+                    You&rsquo;re on the list!
+                  </h2>
+                  <p style={{ fontSize: '1rem', color: 'rgba(255, 255, 255, 0.7)', marginTop: '0.5rem' }}>
+                    We&rsquo;ll be in touch soon.
+                  </p>
+                </div>
               </div>
             )}
           </AnimatedEntrance>
