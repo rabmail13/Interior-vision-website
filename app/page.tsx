@@ -11,7 +11,6 @@ import AnimatedEntrance, { StaggerContainer, StaggerItem } from './components/An
 import ScrollIndicator from './components/ScrollIndicator';
 import JumpToTop from './components/JumpToTop';
 import JumpToBottom from './components/JumpToBottom';
-import Footer from './components/Footer';
 import TopNavbar from './components/TopNavbar';
 
 export default function Home() {
@@ -229,7 +228,6 @@ export default function Home() {
             </StaggerContainer>
           </div>
         </ScrollSection>
-        <Footer />
       </main>
     </>
   );

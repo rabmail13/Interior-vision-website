@@ -1,6 +1,5 @@
 import { StaggerContainer, StaggerItem } from '../components/AnimatedEntrance';
 import TopNavbar from '../components/TopNavbar';
-import Footer from '../components/Footer';
 import PostCard from '../components/blog/PostCard';
 import { getAllPosts } from '@/lib/blog';
 
@@ -38,7 +37,6 @@ export default function BlogPage() {
           )}
         </div>
       </section>
-      <Footer />
     </main>
   );
 }
