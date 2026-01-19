@@ -74,8 +74,8 @@ Currently, waitlist submissions are only logged to the console. We need to persi
 **Tasks:**
 - [ ] Create Resend account (https://resend.com)
 - [ ] Add and verify domain (or use resend.dev for testing)
-- [ ] Get API key
-- [ ] Add `RESEND_API_KEY` to `.env.local`
+- [X] Get API key
+- [X] Add `RESEND_API_KEY` to `.env.local`
 - [ ] Install Resend package: `npm install resend`
 
 ### 2.2 User Confirmation Email

@@ -17,8 +17,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Design Studio | Architecture & Interior Design",
-  description: "Creating bespoke interiors and architectural spaces that tell your story",
+  title: "Interior Vision",
+  description: "Spec Smarter, Not Harder",
 };
 
 export const viewport = {
