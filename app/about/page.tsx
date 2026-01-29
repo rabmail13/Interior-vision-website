@@ -1,8 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import TopNavbar from '../components/TopNavbar';
+import PitchDeckViewer from '../components/PitchDeckViewer';
 
 export default function AboutPage() {
+  const [isPitchDeckOpen, setIsPitchDeckOpen] = useState(false);
+
   return (
     <main className="scroll-container">
       <div className="top-navbar-static">
@@ -23,6 +27,14 @@ export default function AboutPage() {
             <p className="about-text">
               Our mission is simple: give designers back their time so they can focus on what they do best—creating beautiful spaces.
             </p>
+
+            {/* Pitch Deck Button */}
+            <button
+              onClick={() => setIsPitchDeckOpen(true)}
+              className="mt-8 px-8 py-4 bg-white text-black rounded-lg font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              View Our Pitch Deck
+            </button>
           </div>
 
           {/* Right illustration */}
@@ -35,6 +47,13 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Pitch Deck Modal */}
+      <PitchDeckViewer
+        isOpen={isPitchDeckOpen}
+        onClose={() => setIsPitchDeckOpen(false)}
+        pdfUrl="/Pitch-deck-1.29/Pitch Deck - InteriorVision [WIP].pdf"
+      />
     </main>
   );
 }

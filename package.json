@@ -28,8 +28,10 @@
     "next": "16.0.7",
     "next-mdx-remote": "^5.0.0",
     "next-sanity": "^11.6.10",
+    "pdfjs-dist": "^5.4.530",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "react-pdf": "^10.3.0",
     "resend": "^6.7.0",
     "sanity": "^4.20.3"
   },
