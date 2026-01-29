@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 
 // Configure PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+if (typeof window !== 'undefined') {
+  pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+}
 
 interface PitchDeckViewerProps {
   isOpen: boolean;
@@ -18,6 +20,13 @@ export default function PitchDeckViewer({ isOpen, onClose, pdfUrl }: PitchDeckVi
   const [numPages, setNumPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
+  const [pageWidth, setPageWidth] = useState<number>(1200);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setPageWidth(Math.min(window.innerWidth * 0.9, 1200));
+    }
+  }, []);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
@@ -89,7 +98,7 @@ export default function PitchDeckViewer({ isOpen, onClose, pdfUrl }: PitchDeckVi
               renderTextLayer={true}
               renderAnnotationLayer={true}
               className="shadow-2xl"
-              width={Math.min(window.innerWidth * 0.9, 1200)}
+              width={pageWidth}
             />
           </Document>
         </div>

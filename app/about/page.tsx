@@ -1,8 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import TopNavbar from '../components/TopNavbar';
-import PitchDeckViewer from '../components/PitchDeckViewer';
+
+const PitchDeckViewer = dynamic(() => import('../components/PitchDeckViewer'), {
+  ssr: false,
+  loading: () => null
+});
 
 export default function AboutPage() {
   const [isPitchDeckOpen, setIsPitchDeckOpen] = useState(false);
