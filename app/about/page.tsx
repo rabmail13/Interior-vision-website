@@ -57,7 +57,7 @@ export default function AboutPage() {
       <PitchDeckViewer
         isOpen={isPitchDeckOpen}
         onClose={() => setIsPitchDeckOpen(false)}
-        pdfUrl="/Pitch-deck-1.29/Pitch Deck - InteriorVision [WIP].pdf"
+        pdfUrl="/Pitch-deck-1.29/Pitch Deck - InteriorVision [WIP] (1).pdf"
       />
     </main>
   );
