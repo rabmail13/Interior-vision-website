@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     // Send confirmation email to user
     try {
       await resend.emails.send({
-        from: 'Interior Vision <contact@tryinteriorvision.com>', // Replace with your verified domain
+        from: 'Interior Vision <onboarding@resend.dev>', // Using Resend test domain - replace with your verified domain
         to: [email],
         subject: "You're on the Waitlist!",
         html: `
@@ -121,7 +121,7 @@ export async function POST(request: NextRequest) {
     if (adminEmail) {
       try {
         await resend.emails.send({
-          from: 'Interior Vision <contact@tryinteriorvision.com>',
+          from: 'Interior Vision <onboarding@resend.dev>', // Using Resend test domain - replace with your verified domain
           to: [adminEmail],
           subject: 'New Waitlist Signup - Interior Vision',
           html: `
