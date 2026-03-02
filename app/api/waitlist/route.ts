@@ -73,9 +73,9 @@ export async function POST(request: NextRequest) {
     // Send confirmation email to user
     try {
       await resend.emails.send({
-        from: 'Interior Vision <onboarding@resend.dev>', // Replace with your verified domain
+        from: 'Interior Vision <contact@tryinteriorvision.com>', // Replace with your verified domain
         to: [email],
-        subject: 'Welcome to Interior Vision Waitlist!',
+        subject: "You're on the Waitlist!",
         html: `
           <!DOCTYPE html>
           <html>
@@ -99,14 +99,7 @@ export async function POST(request: NextRequest) {
                   <p>We're thrilled to have you on board. Interior Vision is revolutionizing the way professionals spec and manage interior design projects.</p>
 
                   <h3>What's Next?</h3>
-                  <ul>
-                    <li>We'll keep you updated on our development progress</li>
-                    <li>You'll be among the first to know when we launch</li>
-                    <li>You'll get early access to exclusive features</li>
-                  </ul>
-
                   <p>Stay tuned for exciting updates!</p>
-
                   <p>Best regards,<br/><span class="highlight">The Interior Vision Team</span></p>
                 </div>
                 <div class="footer">
