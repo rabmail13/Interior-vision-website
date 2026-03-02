@@ -121,7 +121,7 @@ export async function POST(request: NextRequest) {
     if (adminEmail) {
       try {
         await resend.emails.send({
-          from: 'Interior Vision <onboarding@resend.dev>',
+          from: 'Interior Vision <contact@tryinteriorvision.com>',
           to: [adminEmail],
           subject: 'New Waitlist Signup - Interior Vision',
           html: `
