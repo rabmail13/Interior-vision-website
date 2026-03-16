@@ -1,8 +1,32 @@
-import { Resend } from 'resend';
-import { NextRequest, NextResponse } from 'next/server';
-import { neon } from '@neondatabase/serverless';
+/**
+ * DEPRECATED - 2026-03-16
+ *
+ * This waitlist API route has been temporarily disabled.
+ * All database and email functionality has been commented out.
+ *
+ * To re-enable:
+ * 1. Uncomment the imports and POST handler below
+ * 2. Ensure environment variables are set (DATABASE_URL, RESEND_API_KEY, ADMIN_EMAIL)
+ * 3. Verify database connection and schema
+ */
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { NextRequest, NextResponse } from 'next/server';
+
+// DEPRECATED: Imports commented out
+// import { Resend } from 'resend';
+// import { neon } from '@neondatabase/serverless';
+// const resend = new Resend(process.env.RESEND_API_KEY);
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function POST(_request: NextRequest) {
+  // DEPRECATED: Waitlist functionality disabled
+  return NextResponse.json(
+    { error: 'Waitlist signups are currently unavailable' },
+    { status: 503 }
+  );
+}
+
+/* DEPRECATED: Original implementation preserved below
 
 export async function POST(request: NextRequest) {
   // Initialize Neon connection inside the handler
@@ -157,3 +181,5 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+*/

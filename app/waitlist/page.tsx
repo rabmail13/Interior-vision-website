@@ -1,3 +1,15 @@
+/**
+ * DEPRECATED - 2026-03-16
+ *
+ * This waitlist page has been temporarily disabled.
+ * The page remains accessible but form submission is disabled.
+ *
+ * To re-enable:
+ * 1. Uncomment the handleSubmit function
+ * 2. Update the form onSubmit handler
+ * 3. Ensure the API route at /api/waitlist is also re-enabled
+ */
+
 'use client';
 
 import { useState } from 'react';
@@ -13,6 +25,13 @@ export default function WaitlistPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // DEPRECATED: Form submission disabled
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('Waitlist signups are currently unavailable. Please check back later.');
+  };
+
+  /* DEPRECATED: Original handleSubmit implementation preserved below
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -40,6 +59,7 @@ export default function WaitlistPage() {
       setLoading(false);
     }
   };
+  */
 
   return (
     <main className="scroll-container">
