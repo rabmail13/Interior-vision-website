@@ -14,9 +14,8 @@ export default function TopNavbar({ isVisible = true }: TopNavbarProps) {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Email Us', href: 'mailto:contact@tryinteriorvision.com' }
-    // DEPRECATED 2026-03-16: Waitlist link temporarily removed
-    // { label: 'Join Waitlist', href: 'https://interior-vision.app/login', highlight: true }
+    { label: 'Email Us', href: 'mailto:contact@tryinteriorvision.com' },
+    { label: 'Try Now', href: 'https://interior-vision.app/login', highlight: true }
   ];
 
   const toggleMobileMenu = () => {
