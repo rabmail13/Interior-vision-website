@@ -19,6 +19,9 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Interior Vision",
   description: "Spec Smarter, Not Harder",
+  icons: {
+    icon: '/3.svg',
+  },
 };
 
 export const viewport = {
