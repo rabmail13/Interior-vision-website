@@ -36,13 +36,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} antialiased flex flex-col min-h-screen`}>
-        <TopNavbar />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+    <html lang="en" className="h-full">
+      <body className={`${inter.variable} ${playfair.variable} antialiased h-full`}>
+        <div className="flex flex-col min-h-screen">
+          <TopNavbar />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
