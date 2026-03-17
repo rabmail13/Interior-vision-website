@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { FolderPen, Brain, ChevronDown } from 'lucide-react';
+import { FolderPen, Brain, ChevronDown, Package } from 'lucide-react';
 
 export default function FeaturesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,7 +51,7 @@ export default function FeaturesSection() {
       description: 'Communicate with Clients. Manage products, projects, & Clients in one interface'
     },
     {
-      icon: <FolderPen />,
+      icon: <Package />,
       title: 'Intelligent Inventory Management',
       description: 'One-click save → organized procurement collections via our Browser Extension'
     },
