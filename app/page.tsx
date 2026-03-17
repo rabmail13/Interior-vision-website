@@ -117,7 +117,7 @@ export default function Home() {
                 <TypingText typingSpeed={15} startDelay={1000}>
                   Built by Designers,{' '}
                 </TypingText>
-                <span className="tagline-underline">
+                <span className="tagline-underline" style={{ marginLeft: '0.25em' }}>
                   <HighlightText
                     text="For Designers."
                     delay={2250}

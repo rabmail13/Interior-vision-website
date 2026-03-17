@@ -15,7 +15,7 @@ export default function TopNavbar({ isVisible = true }: TopNavbarProps) {
     { label: 'About', href: '/about' },
     { label: 'Blog', href: '/blog' },
     { label: 'Email Us', href: 'mailto:contact@tryinteriorvision.com' },
-    { label: 'Try Now', href: 'https://interior-vision.app/login', highlight: true }
+    { label: 'Try Now', href: 'https://interior-vision.app/signup', highlight: true }
   ];
 
   const toggleMobileMenu = () => {
