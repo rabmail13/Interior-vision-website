@@ -17,7 +17,9 @@ import Footer from './components/Footer';
 export default function Home() {
   const section5VideoRef = useRef<HTMLVideoElement>(null);
   const heroSectionRef = useRef<HTMLDivElement>(null);
+  const learnMoreSectionRef = useRef<HTMLDivElement>(null);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const [isLearnMoreVisible, setIsLearnMoreVisible] = useState(false);
 
   useEffect(() => {
     const videoElement = section5VideoRef.current;
@@ -60,6 +62,26 @@ export default function Home() {
     );
 
     observer.observe(heroElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const learnMoreElement = learnMoreSectionRef.current;
+    if (!learnMoreElement) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsLearnMoreVisible(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.1 } // Show footer when at least 10% of learn more section is visible
+    );
+
+    observer.observe(learnMoreElement);
 
     return () => {
       observer.disconnect();
@@ -188,6 +210,7 @@ export default function Home() {
           className="section-6"
           contentAlignment="center"
           backgroundColor="#f5f5f0"
+          ref={learnMoreSectionRef}
         >
           <div className="learn-container">
             {/* Header */}
@@ -226,11 +249,16 @@ export default function Home() {
               </StaggerItem>
             </StaggerContainer>
           </div>
+
         </ScrollSection>
       </main>
 
-      {/* Footer Section */}
-      <Footer />
+      {/* Footer as fixed overlay - only visible on learn more section */}
+      {isLearnMoreVisible && (
+        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 10 }}>
+          <Footer />
+        </div>
+      )}
     </>
   );
 }
