@@ -113,20 +113,18 @@ export default function Home() {
           <div className="tagline-container">
             <div className="tagline-line">
               <h2 className="tagline-text">
-                <TypingText typingSpeed={20} startDelay={1000}>
-                  From <em>inspiration</em> to <em>implementation</em>,
+                <TypingText typingSpeed={15} startDelay={1000}>
+                  Built by Designers,{' '}
                 </TypingText>
-              </h2>
-            </div>
-            <div className="tagline-line">
-              <h2 className="tagline-text tagline-underline">
-                <HighlightText 
-                  text="all in one place." 
-                  delay={2710}
-                  duration={480}
-                  highlightColor="#d4ff00"
-                  textColor="#000000"
-                />
+                <span className="tagline-underline">
+                  <HighlightText
+                    text="For Designers."
+                    delay={2250}
+                    duration={480}
+                    highlightColor="#d4ff00"
+                    textColor="#000000"
+                  />
+                </span>
               </h2>
             </div>
           </div>
@@ -135,30 +133,10 @@ export default function Home() {
           <ScrollIndicator />
         </ScrollSection>
 
-        {/* Section 2: Key Features */}
-        <ScrollSection
-          id="features"
-          className="section-2"
-          contentAlignment="center"
-          backgroundColor="#f5f5f0"
-        >
-          <FeaturesSection />
-        </ScrollSection>
-
-        {/* Section 3: Built by Designers */}
-        <ScrollSection
-          id="built-by-designers"
-          className="section-3"
-          contentAlignment="center"
-          backgroundColor="#000000"
-        >
-          <BuiltByDesigners />
-        </ScrollSection>
-
-        {/* Section 4: Video Section */}
+        {/* Section 2: Video Section */}
         <ScrollSection
           id="mood-boards"
-          className="section-4"
+          className="section-2"
           contentAlignment="center"
           backgroundColor="#e5e5e5"
         >
@@ -173,15 +151,35 @@ export default function Home() {
           </video>
         </ScrollSection>
 
-        {/* Section 5: Manage Projects */}
+        {/* Section 3: Key Features */}
         <ScrollSection
+          id="features"
+          className="section-3"
+          contentAlignment="center"
+          backgroundColor="#f5f5f0"
+        >
+          <FeaturesSection />
+        </ScrollSection>
+
+        {/* Section 4: Built by Designers - DISABLED */}
+        {/* <ScrollSection
+          id="built-by-designers"
+          className="section-4"
+          contentAlignment="center"
+          backgroundColor="#000000"
+        >
+          <BuiltByDesigners />
+        </ScrollSection> */}
+
+        {/* Section 5: Manage Projects - DISABLED */}
+        {/* <ScrollSection
           id="manage-projects"
           className="section-5"
           contentAlignment="center"
           backgroundColor="#000000"
         >
           <ManageProjectsSection />
-        </ScrollSection>
+        </ScrollSection> */}
 
         {/* Section 6: Learn More */}
         <ScrollSection
