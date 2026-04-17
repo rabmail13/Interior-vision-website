@@ -12,7 +12,7 @@ export default function AboutPage() {
         <div style={{ width: '100%', maxWidth: '1100px', margin: '0 auto', padding: '0 4rem', boxSizing: 'border-box' }}>
           {/* Content */}
           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <h2 className="about-title" style={{ marginBottom: '1rem' }}>About Us</h2>
+            <h2 className="about-title" style={{ marginBottom: '1rem' }}>About</h2>
             <p className="about-text">
               Our vision started as an all-in-one project management and specification platform built for interior designers and architects. It included interfaces for mood boards, specification sheets, client approvals, project timelines, and invoicing so studios can ditch the scattered spreadsheets and run everything from concept to completion in one seamlessly designed place.
             </p>
