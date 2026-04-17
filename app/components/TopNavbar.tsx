@@ -13,7 +13,7 @@ export default function TopNavbar({ isVisible = true }: TopNavbarProps) {
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
-    { label: 'Blog', href: '/blog' },
+    // { label: 'Blog', href: '/blog' },
     { label: 'Email Us', href: 'mailto:contact@tryinteriorvision.com' },
     { label: 'Try Now', href: 'https://interior-vision.app/signup', highlight: true }
   ];

@@ -1,16 +1,6 @@
-'use client';
-
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
 import TopNavbar from '../components/TopNavbar';
 
-const PitchDeckViewer = dynamic(() => import('../components/PitchDeckViewer'), {
-  ssr: false,
-  loading: () => null
-});
-
 export default function AboutPage() {
-  const [isPitchDeckOpen, setIsPitchDeckOpen] = useState(false);
 
   return (
     <main className="scroll-container">
@@ -24,22 +14,14 @@ export default function AboutPage() {
           <div className="about-content">
             <h2 className="about-title">About Us</h2>
             <p className="about-text">
-              Interior Vision was created by a designers and engineers who have lived through the friction of disjointed and overpriced project management tools.
+              Our vision started as an all-in-one project management and specification platform built for interior designers and architects. It included interfaces for mood boards, specification sheets, client approvals, project timelines, and invoicing so studios can ditch the scattered spreadsheets and run everything from concept to completion in one seamlessly designed place.
             </p>
             <p className="about-text">
-              By combining design expertise with technical know-how, we created the tool we always wished existed: an intelligent sourcing platform that <span className="about-italic-underline">actually</span> understands what professional designers need.
+              After further market research, we found that everyday people and business owners (non designers / architects) have a strong desire for self-service design and procurement tools. However, the existing apps on the market are woefully insufficient.
             </p>
             <p className="about-text">
-              Our mission is simple: give designers back their time so they can focus on what they do best—creating beautiful spaces.
+              Recognizing this massive need in the market, we expanded our vision to create Interior Vision, an AI-powered design acceleration platform that puts professional-grade tools directly into the hands of everyday users. By transforming Pinterest boards into identified style profiles, floor plans into custom layouts, and inspiration into shoppable product lists in seconds, we're democratizing a process that used to require hiring a professional or hours of manual curation. Whether it's a renter styling their first apartment, a homeowner refreshing a single room, or an entrepreneur designing their barbershop, tattoo studio, or salon, Interior Vision delivers flexible, affordable, and genuinely intuitive design tools built for how people actually create spaces today.
             </p>
-
-            {/* Pitch Deck Button */}
-            <button
-              onClick={() => setIsPitchDeckOpen(true)}
-              className="mt-8 px-8 py-4 bg-white text-black rounded-lg font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              View Our Pitch Deck
-            </button>
           </div>
 
           {/* Right illustration */}
@@ -52,13 +34,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Pitch Deck Modal */}
-      <PitchDeckViewer
-        isOpen={isPitchDeckOpen}
-        onClose={() => setIsPitchDeckOpen(false)}
-        pdfUrl="/Pitch-deck-1.29/Pitch Deck - InteriorVision [WIP] (1).pdf"
-      />
     </main>
   );
 }
