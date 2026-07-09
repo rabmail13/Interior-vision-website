@@ -14,13 +14,16 @@ export default function AboutPage() {
           <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <h2 className="about-title" style={{ marginBottom: '1rem' }}>About</h2>
             <p className="about-text">
-              Our vision started as an all-in-one project management and specification platform built for interior designers and architects. It included interfaces for mood boards, specification sheets, client approvals, project timelines, and invoicing so studios can ditch the scattered spreadsheets and run everything from concept to completion in one seamlessly designed place.
+              We started by building an all-in-one platform for interior designers and hobbists - mood boards, spec sheets, client approvals, timelines, and invoicing in one place, so studios could ditch scattered spreadsheets and run every project from concept to completion.
             </p>
             <p className="about-text">
-              After further market research, we found that everyday people and business owners (non designers / architects) have a strong desire for self-service design and procurement tools. However, the existing apps on the market are woefully insufficient.
+              Then our research surfaced something bigger: everyday people and business owners want to design and shop for their spaces themselves—but the tools available to them fall painfully short.
             </p>
             <p className="about-text">
-              Recognizing this massive need in the market, we expanded our vision to create Interior Vision, an AI-powered design acceleration platform that puts professional-grade tools directly into the hands of everyday users. By transforming Pinterest boards into identified style profiles, floor plans into custom layouts, and inspiration into shoppable product lists in seconds, we're democratizing a process that used to require hiring a professional or hours of manual curation. Whether it's a renter styling their first apartment, a homeowner refreshing a single room, or an entrepreneur designing their barbershop, tattoo studio, or salon, Interior Vision delivers flexible, affordable, and genuinely intuitive design tools built for how people actually create spaces today.
+              So we built Interior Vision, an AI-powered design platform that puts professional-grade tools in everyone's hands. It turns your boards into style profiles, floor plans into custom layouts, and inspiration into shoppable product lists, all in just seconds. What used to require hiring a pro or hours of manual curation can now be done in a fraction of the time, by anyone.
+            </p>
+            <p className="about-text">
+              Whether you're a renter styling your first apartment, a homeowner refreshing a room, or an entrepreneur designing your barbershop, tattoo studio, or salon, Interior Vision is flexible, affordable, and built for how people actually create spaces today.
             </p>
           </div>
         </div>
