@@ -137,8 +137,9 @@ export default function Home() {
             <div className="tagline-line">
               <h2 className="tagline-text">
                 <TypingText typingSpeed={15} startDelay={1000}>
-                  Your{' '}
+                  Your
                 </TypingText>
+                {'\u00A0'}
                 <span className="tagline-underline">
                   <HighlightText
                     text="all-in-one"
