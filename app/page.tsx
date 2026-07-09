@@ -137,17 +137,20 @@ export default function Home() {
             <div className="tagline-line">
               <h2 className="tagline-text">
                 <TypingText typingSpeed={15} startDelay={1000}>
-                  Built by Designers,{' '}
+                  Your{' '}
                 </TypingText>
-                <span className="tagline-underline" style={{ marginLeft: '0.25em' }}>
+                <span className="tagline-underline">
                   <HighlightText
-                    text="For Designers."
-                    delay={2250}
+                    text="all-in-one"
+                    delay={1500}
                     duration={480}
                     highlightColor="#d4ff00"
                     textColor="#000000"
                   />
                 </span>
+                <TypingText typingSpeed={15} startDelay={2000}>
+                  {' '}interior design platform
+                </TypingText>
               </h2>
             </div>
           </div>
