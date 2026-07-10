@@ -149,8 +149,9 @@ export default function Home() {
                     textColor="#000000"
                   />
                 </span>
+                {'\u00A0'}
                 <TypingText typingSpeed={15} startDelay={2000}>
-                  {' '}interior design platform
+                  interior design platform
                 </TypingText>
               </h2>
             </div>
